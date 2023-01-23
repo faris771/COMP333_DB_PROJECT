@@ -1,5 +1,6 @@
-drop database hotel;
+ -- drop database hotel;
 create database hotel;
+use hotel;
 create table employee (
   eid int primary key,
   firstName varchar(32),
@@ -47,6 +48,7 @@ create table Guest(
   foreign key (Booking_id) references Booking(Booking_id),
   foreign key (payment_id) references pay_payment (payment_id)
 );
+
 create table provides(
   Guest_SSN int,
   eid int,
@@ -55,4 +57,13 @@ create table provides(
   foreign key (Guest_SSN) references guest (Guest_SSN),
   foreign key (eid) references employee (eid),
   foreign key (serviceid) references services(serviceid)
+);
+
+
+
+CREATE TABLE  PHONE(
+	phone_num VARCHAR(32) ,
+    eid INT,
+    PRIMARY KEY(phone_num,eid),
+    FOREIGN KEY(eid) REFERENCES EMPLOYEE(eid)
 );
