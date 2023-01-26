@@ -12,10 +12,11 @@ create table employee (
   employee_email varchar(32),
   employee_nationality varchar(32),
   starting_date DATE DEFAULT(CURRENT_DATE()) ,
-  salary real
+  salary real,
+  password VARCHAR(32) NOT NULL
 
 );
-INSERT INTO EMPLOYEE VALUES(1,1,"root",'root','root','root@gmail.com','PS',CURRENT_DATE(), 1000.0);
+INSERT INTO EMPLOYEE VALUES(1,1,"root",'root','root','root@gmail.com','PS',CURRENT_DATE(), 999.9,'password');
 
 create table services(
   service_id int primary key AUTO_INCREMENT,
@@ -85,7 +86,7 @@ CREATE TABLE PAYMENT(
   guest_ssn int,
   Booking_id int,
   Payment_way varchar(32),
-	Payment_Day varchar (32),
+  Payment_Day varchar (32),
   foreign key (Booking_id) references Booking (Booking_id),
   foreign key (guest_ssn) references Booking (guest_ssn)
 
