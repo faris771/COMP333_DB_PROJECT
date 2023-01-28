@@ -2,6 +2,8 @@ package com.example.comp333;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.sql.*;
+import java.sql.Connection;
 
 public class Employee {
     private int eid; //Primary Key
