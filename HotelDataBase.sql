@@ -12,6 +12,7 @@ create table employee (
   employee_email varchar(32),
   employee_nationality varchar(32),
   starting_date DATE DEFAULT(CURRENT_DATE()) ,
+  birth_date DATE, -- NEW
   salary real,
   password VARCHAR(32) NOT NULL
 
