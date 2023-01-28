@@ -10,20 +10,22 @@ public class Employee {
     private String employeeFatherName;
     private String employeeFamilyName;
     private String employeeEmail;
+    private String employeeNationality;
     private String[] employeePhone; // not sure about it
     private Date employeeStartingDate;
     private Date employeeBirthDate;
     private double salary;
     private String password;
 
-    public Employee(int eid, int employeeSSN, String employeeFristName, String employeeFatherName, String employeeFamilyName, String employeeEmail, String[] employeePhone, Date employeeStartingDate, Date employeeBirthDate, double salary, String password) {
+    public Employee(int eid, int employeeSSN, String employeeFirstName, String employeeFatherName, String employeeFamilyName, String employeeEmail,String employeeNationality, String[] employeePhone, Date employeeStartingDate, Date employeeBirthDate, double salary, String password) {
 
-        this.eid = eid;
+        this.eid = eid; // Employee ID
         this.employeeSSN = employeeSSN;
-        this.employeeFirstName = employeeFristName;
+        this.employeeFirstName = employeeFirstName;
         this.employeeFatherName = employeeFatherName;
         this.employeeFamilyName = employeeFamilyName;
         this.employeeEmail = employeeEmail;
+        this.employeeNationality = employeeNationality;
         this.employeePhone = employeePhone;
         this.employeeStartingDate = employeeStartingDate;
         this.employeeBirthDate = employeeBirthDate;
@@ -117,6 +119,15 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public String getEmployeeNationality() {
+        return employeeNationality;
+    }
+
+    public void setEmployeeNationality(String employeeNationality) {
+        this.employeeNationality = employeeNationality;
     }
 
     @Override
