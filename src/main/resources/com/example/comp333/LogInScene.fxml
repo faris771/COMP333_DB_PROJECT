@@ -32,14 +32,13 @@
             <Font name="Californian FB Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="userNameid" blendMode="SRC_ATOP" cache="true" layoutX="184.0" layoutY="174.0" maxHeight="0.0" maxWidth="150.0" promptText="User Name" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
       <Label layoutX="54.0" layoutY="245.0" text="Password" textFill="#bfbfbf">
          <font>
             <Font name="Californian FB Bold" size="21.0" />
          </font>
       </Label>
       <TextField fx:id="Password" layoutX="184.0" layoutY="242.0" maxHeight="0.0" maxWidth="150.0" promptText="Password" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
-      <Button fx:id="loginbuttton" blendMode="SRC_ATOP" layoutX="259.0" layoutY="378.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Log In">
+      <Button fx:id="LogIn" blendMode="SRC_ATOP" layoutX="259.0" layoutY="378.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Log In">
          <textFill>
             <RadialGradient centerX="0.5" radius="0.5">
                <stops>

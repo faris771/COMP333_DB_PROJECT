@@ -1,3 +1,5 @@
+
+
 package com.example.comp333;
 // hamza branch
 import javafx.application.Application;
@@ -12,6 +14,8 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scene2.fxml"));
+        // for the login scene put the size  410 , 500
+        // for menu Scene put the size 500 , 600
         Scene scene = new Scene(fxmlLoader.load(), 600,500);
         stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
@@ -22,3 +26,4 @@ public class HelloApplication extends Application {
         launch();
     }
 }
+
