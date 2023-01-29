@@ -51,7 +51,7 @@
                 </Button>
                 <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../Users/Admin/Desktop/images/booking.png" />
+                        <Image url="@images/booking.png" />
                     </image>
                 </ImageView>
             </children>
@@ -66,7 +66,7 @@
                 </Button>
                 <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../Users/Admin/Desktop/images/payment.png" />
+                        <Image url="@images/payment.png" />
                     </image>
                 </ImageView>
             </children>
@@ -96,7 +96,7 @@
                 </Button>
                 <ImageView fitHeight="54.0" fitWidth="86.0" layoutX="61.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../Users/Admin/Desktop/images/phone.png" />
+                        <Image url="@images/phone.png" />
                     </image>
                 </ImageView>
             </children>
