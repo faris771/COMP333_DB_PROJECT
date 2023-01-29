@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Pane layoutX="14.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="47.0" layoutY="87.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="86.0" style="-fx-background-color: #74889c;" text="GUEST" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="54.0" fitWidth="71.0" layoutX="63.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/guest.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="209.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="47.0" layoutY="87.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="86.0" style="-fx-background-color: #74889c;" text="ROOM" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/room.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="14.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="37.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="BOOKING" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/booking.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="209.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="36.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="PAYMENT" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/payment.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="403.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="37.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="SERVICE" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="54.0" fitWidth="115.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/services.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="403.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+            <children>
+                <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+                <Button layoutX="24.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="134.0" style="-fx-background-color: #74889c;" text="EMP_PHONE" textFill="#383333" wrapText="true">
+                    <font>
+                        <Font name="Berlin Sans FB Bold" size="17.0" />
+                    </font>
+                </Button>
+            <ImageView fitHeight="54.0" fitWidth="86.0" layoutX="61.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/phone.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+      <Label layoutX="122.0" layoutY="72.0" prefHeight="17.0" prefWidth="345.0" style="-fx-border-color: #F5DEB3; -fx-background-color: #808080;" text="Choose From the Menu" textFill="#0d1428" underline="true">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

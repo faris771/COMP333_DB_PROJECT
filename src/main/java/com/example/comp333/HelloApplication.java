@@ -8,11 +8,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 // testing pull
 public class HelloApplication extends Application {
+    //test
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scene2.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600,500);
+        stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
         stage.show();
     }
