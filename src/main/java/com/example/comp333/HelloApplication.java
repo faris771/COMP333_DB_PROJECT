@@ -27,11 +27,11 @@ public class HelloApplication extends Application {
     public void logout(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("log out");
-        alert.setHeaderText("You are aboutt to logout");
+        alert.setHeaderText("You are about to logout");
         alert.setContentText("u want to save b4 exiting?");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
-            System.out.println("successfuly logged out");
+            System.out.println("successfully logged out");
             stage.close();
         }
 
