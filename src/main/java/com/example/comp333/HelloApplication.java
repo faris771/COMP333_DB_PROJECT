@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(),  410,500);
         stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(e->{
             e.consume();
