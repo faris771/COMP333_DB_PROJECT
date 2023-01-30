@@ -12,12 +12,31 @@ create table employee (
   employee_email varchar(32),
   employee_nationality varchar(32),
   starting_date DATE DEFAULT(CURRENT_DATE()) ,
-  birth_date DATE, -- NEW
   salary real,
   password VARCHAR(32) NOT NULL
 
 );
-INSERT INTO EMPLOYEE VALUES(1,1,"root",'root','root','root@gmail.com','PS',CURRENT_DATE(), 999.9,'password');
+ALTER TABLE employee AUTO_INCREMENT = 1000;
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (1, 'root', 'root', 'root', 'root@gmail.com', 'PS', 999.9, 'password');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (2, 'Faris', 'Amer', 'Abufarha', 'farisabufarha33@gmail.com', 'PS', 1299.9, 'faris');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (3, 'Saja', 'Musheer', 'Shareef', 'saja@gmail.com', 'PS', 999.9, 'saja');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (4, 'Shereen', 'Khaled', 'Ibdah', 'shereen@gmail.com', 'PS', 999.9, 'shereen');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (5, 'Hamza', 'hamza father', 'Awashra', 'hamza@gmail.com', 'PS', 999.9, 'hamza');
+
 
 create table services(
   service_id int primary key AUTO_INCREMENT,
