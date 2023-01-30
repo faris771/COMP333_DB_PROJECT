@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="403.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.loginController">
+   <children>
+      <ImageView fx:id="HotelImage" fitHeight="553.0" fitWidth="511.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Hotel.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </ImageView>
+      <Label layoutX="54.0" layoutY="177.0" text="User Name" textFill="#bfbfbf">
+         <font>
+            <Font name="Californian FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userName" blendMode="SRC_ATOP" cache="true" layoutX="184.0" layoutY="174.0" maxHeight="0.0" maxWidth="150.0" promptText="User Name" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
+      <Label layoutX="54.0" layoutY="245.0" text="Password" textFill="#bfbfbf">
+         <font>
+            <Font name="Californian FB Bold" size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="259.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Log In">
+         <textFill>
+            <RadialGradient centerX="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <ImageView fitHeight="126.0" fitWidth="41.0" layoutX="7.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/customer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="8.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/lock.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="tryAgainLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="303.0" prefHeight="20.0" prefWidth="403.0" textFill="#5af5eb">
+         <font>
+            <Font name="Californian FB Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="81.0" layoutY="92.0" text="Welcome To the website" textOverrun="CENTER_WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font name="Californian FB Bold" size="23.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.21052631735801697" green="0.7105262875556946" blue="0.6438596248626709" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.832602322101593" green="0.8815789222717285" blue="0.8750487565994263" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="cancelButton" blendMode="SRC_ATOP" layoutX="31.0" layoutY="378.0" mnemonicParsing="false" onAction="#clearButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="clear">
+         <textFill>
+            <RadialGradient centerX="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <PasswordField fx:id="password" layoutX="185.0" layoutY="248.0" promptText="password" />
+   </children>
+</AnchorPane>
