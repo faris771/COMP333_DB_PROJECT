@@ -137,7 +137,7 @@ public class Employee {
         return "Employee{" +
                 "eid=" + eid +
                 ", employeeSSN=" + employeeSSN +
-                ", employeeFristName='" + employeeFirstName + '\'' +
+                ", employeeFirstName='" + employeeFirstName + '\'' +
                 ", employeeFatherName='" + employeeFatherName + '\'' +
                 ", employeeFamilyName='" + employeeFamilyName + '\'' +
                 ", employeeEmail='" + employeeEmail + '\'' +
