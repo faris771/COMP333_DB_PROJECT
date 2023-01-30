@@ -47,28 +47,27 @@ public class loginController {
 
         DataBaseConnection connectNow = new DataBaseConnection(); // create new object of DataBaseConnection class
         Connection connectDB = connectNow.getConnection();
-        String verifyLogin = "SELECT EID FROM EMPLOYEE WHERE  EID = '" + userName.getText().trim ()  + "' AND PASSWORD =  '" + password.getText().trim () + "'"; // query to check if username and password are correct
+        String verifyLogin = "SELECT EID FROM EMPLOYEE WHERE  EID = '" + userName.getText() + "' AND PASSWORD =  '" + password.getText() + "'"; // query to check if username and password are correct
+
         try {
 
             Statement statement = connectDB.createStatement(); // create statement
             ResultSet queryResult = statement.executeQuery(verifyLogin); // execute query
 
-            while (queryResult.next()) { //
-                if (queryResult.getInt(1) != 0) { // if username and password are correct I'M NOT SURE ABOUT IT
-                    System.out.println("logged in successfully");
-                    tryAgainLabel.setText("WELCOME");
-                    tryAgainLabel.setTextFill(Color.GREEN);
-                    /*
-                        SWITCH SCENE HERE
+            if (queryResult.next()) { // if query returned result (upd by Hamza)
+                System.out.println("logged in successfully");
+                tryAgainLabel.setText("WELCOME");
+                tryAgainLabel.setTextFill(Color.GREEN);
+                /*
+                    SWITCH SCENE HERE
 
-                    */
-
-                } else {
-                    tryAgainLabel.setText("WRONG USERNAME OR PASSWORD TRY AGAIN");
-                    tryAgainLabel.setTextFill(Color.RED);
-                    System.out.println("try again"); // if username and password are incorrect
-                }
+                */
+            } else {
+                tryAgainLabel.setText("WRONG USERNAME OR PASSWORD TRY AGAIN");
+                tryAgainLabel.setTextFill(Color.RED);
+                System.out.println("try again"); // if username and password are incorrect
             }
+
         } catch (Exception e) { //
             tryAgainLabel.setText("WRONG USERNAME OR PASSWORD TRY AGAIN");
             tryAgainLabel.setTextFill(Color.RED);
