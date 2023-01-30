@@ -33,6 +33,7 @@ public class loginController {
     Label tryAgainLabel;
 
     public void clearButtonOnAction(ActionEvent event) {
+        tryAgainLabel.setText("");
         userName.setText("");
         password.setText("");
     }
@@ -70,6 +71,7 @@ public class loginController {
                         scene = new Scene(fxmlLoader.load(), 600, 500);
                         stage.setTitle("Hotel DataBase!");
                         stage.setScene(scene);
+                        stage.setResizable(false);
                         stage.show();
                     }
                     catch (IOException e){
