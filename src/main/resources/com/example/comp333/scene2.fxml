@@ -34,11 +34,11 @@
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
                 </Button>
-            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/room.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/room.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
         <Pane layoutX="14.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
@@ -49,11 +49,11 @@
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
                 </Button>
-            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/booking.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/booking.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
         <Pane layoutX="209.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
@@ -64,11 +64,11 @@
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
                 </Button>
-            <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/payment.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/payment.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
         <Pane layoutX="403.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
@@ -79,11 +79,11 @@
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
                 </Button>
-            <ImageView fitHeight="54.0" fitWidth="115.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/services.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="54.0" fitWidth="115.0" layoutX="64.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/services.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
         <Pane layoutX="403.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
@@ -94,17 +94,17 @@
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
                 </Button>
-            <ImageView fitHeight="54.0" fitWidth="86.0" layoutX="61.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Users/Admin/Desktop/images/phone.png" />
-               </image>
-            </ImageView>
+                <ImageView fitHeight="54.0" fitWidth="86.0" layoutX="61.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/phone.png" />
+                    </image>
+                </ImageView>
             </children>
         </Pane>
-      <Label layoutX="122.0" layoutY="72.0" prefHeight="17.0" prefWidth="345.0" style="-fx-border-color: #F5DEB3; -fx-background-color: #808080;" text="Choose From the Menu" textFill="#0d1428" underline="true">
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Label>
+        <Label layoutX="122.0" layoutY="72.0" prefHeight="17.0" prefWidth="345.0" style="-fx-border-color: #F5DEB3; -fx-background-color: #808080;" text="Choose From the Menu" textFill="#0d1428" underline="true">
+            <font>
+                <Font size="32.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>
