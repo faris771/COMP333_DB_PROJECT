@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
         // for the login scene put the size  410 , 500
         // for menu Scene put the size 500 , 600
-        Scene scene = new Scene(fxmlLoader.load(), 600,500);
+        Scene scene = new Scene(fxmlLoader.load(), 410,500);
         stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
         stage.show();
