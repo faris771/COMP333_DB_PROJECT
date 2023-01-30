@@ -28,7 +28,9 @@ public class HelloApplication extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("log out");
         alert.setHeaderText("You are about to logout");
-        alert.setContentText("u want to save b4 exiting?");
+
+
+        alert.setContentText("Are you sure you want to quit?");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             System.out.println("successfully logged out");
