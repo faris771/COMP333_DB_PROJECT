@@ -12,12 +12,11 @@ create table employee (
   employee_email varchar(32),
   employee_nationality varchar(32),
   starting_date DATE DEFAULT(CURRENT_DATE()) ,
-  birth_date DATE, -- NEW
   salary real,
   password VARCHAR(32) NOT NULL
 
 );
-INSERT INTO EMPLOYEE VALUES(1,1,"root",'root','root','root@gmail.com','PS',CURRENT_DATE(), 999.9,'password');
+ALTER TABLE employee AUTO_INCREMENT = 1000;
 
 create table services(
   service_id int primary key AUTO_INCREMENT,
@@ -92,4 +91,75 @@ CREATE TABLE PAYMENT(
   foreign key (guest_ssn) references Booking (guest_ssn)
 
 );
+-- DEFAULT INSERTIONS:
+
+-- EMP TABLE:
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (1, 'root', 'root', 'root', 'root@gmail.com', 'PS', 999.9, 'password');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (2, 'Faris', 'Amer', 'Abufarha', 'farisabufarha33@gmail.com', 'PS', 1299.9, 'faris');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (3, 'Saja', 'Musheer', 'Shareef', 'saja@gmail.com', 'PS', 999.9, 'saja');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (4, 'Shereen', 'Khaled', 'Ibdah', 'shereen@gmail.com', 'PS', 999.9, 'shereen');
+
+INSERT INTO EMPLOYEE (employee_SSN, employee_first_Name, employee_father_Name, employee_family_Name,
+                      employee_email, employee_nationality, salary, password)
+VALUES (5, 'Hamza', 'hamza father', 'Awashra', 'hamza@gmail.com', 'PS', 999.9, 'hamza');
+
+
+-- ROOM table
+
+INSERT INTO room
+VALUES (101, 99.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (102, 99.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (103, 99.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (104, 99.9, 2, 'sweet', 'FREE');
+
+-- SECOND FLOOR
+
+INSERT INTO room
+VALUES (201, 199.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (202, 199.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (203, 199.9, 2, 'sweet', 'FREE');
+INSERT INTO room
+VALUES (204, 199.9, 2, 'sweet', 'FREE');
+
+-- 3RD
+
+INSERT INTO room
+VALUES (301, 170.9, 1, 'single', 'FREE');
+INSERT INTO room
+VALUES (302, 170.9, 1, 'single', 'FREE');
+INSERT INTO room
+VALUES (303, 170.9, 1, 'single', 'FREE');
+INSERT INTO room
+VALUES (304, 170.9, 1, 'single', 'FREE');
+
+-- PHONES
+INSERT INTO employee_phone (eid, phone_num)
+VALUES (1001, 0595110186);
+
+INSERT INTO employee_phone (eid, phone_num)
+VALUES (1001, 0569157426);
+
+
+-- services GUESS SHOULD BE CHANGED
+
+INSERT INTO services (service_type, service_cost)
+VALUES ('Cleaning', 0);
+
+
 -- 
