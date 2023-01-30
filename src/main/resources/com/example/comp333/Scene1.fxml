@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="403.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="403.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.loginController">
    <children>
       <ImageView fx:id="HotelImage" fitHeight="553.0" fitWidth="511.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,14 +33,13 @@
             <Font name="Californian FB Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="userNameid" blendMode="SRC_ATOP" cache="true" layoutX="184.0" layoutY="174.0" maxHeight="0.0" maxWidth="150.0" promptText="User Name" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
+      <TextField fx:id="userName" blendMode="SRC_ATOP" cache="true" layoutX="184.0" layoutY="174.0" maxHeight="0.0" maxWidth="150.0" promptText="User Name" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
       <Label layoutX="54.0" layoutY="245.0" text="Password" textFill="#bfbfbf">
          <font>
             <Font name="Californian FB Bold" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="Password" layoutX="184.0" layoutY="242.0" maxHeight="0.0" maxWidth="150.0" promptText="Password" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 4px;" />
-      <Button fx:id="loginbuttton" blendMode="SRC_ATOP" layoutX="259.0" layoutY="378.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Log In">
+      <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="259.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Log In">
          <textFill>
             <RadialGradient centerX="0.5" radius="0.5">
                <stops>
@@ -67,7 +67,7 @@
             <Image url="@images/lock.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="274.0" layoutY="294.0" prefHeight="14.0" prefWidth="121.0" text="Forget Password?" textFill="#5af5eb">
+      <Label fx:id="tryAgainLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="303.0" prefHeight="20.0" prefWidth="403.0" textFill="#5af5eb">
          <font>
             <Font name="Californian FB Bold" size="14.0" />
          </font>
@@ -94,7 +94,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Button fx:id="cancelbuttton1" blendMode="SRC_ATOP" layoutX="31.0" layoutY="378.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="Cancel">
+      <Button fx:id="cancelButton" blendMode="SRC_ATOP" layoutX="31.0" layoutY="378.0" mnemonicParsing="false" onAction="#clearButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2F4F4F;" text="clear">
          <textFill>
             <RadialGradient centerX="0.5" radius="0.5">
                <stops>
@@ -112,5 +112,6 @@
             </RadialGradient>
          </textFill>
       </Button>
+      <PasswordField fx:id="password" layoutX="185.0" layoutY="248.0" promptText="password" />
    </children>
 </AnchorPane>
