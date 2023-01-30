@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DataBaseConnection {
     public Connection dataBaseLink;
 
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException { //jdbc:mysql://localhost:3306
 
-        dataBaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "password");
+        dataBaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "1200373");
         return dataBaseLink;
 
     }
