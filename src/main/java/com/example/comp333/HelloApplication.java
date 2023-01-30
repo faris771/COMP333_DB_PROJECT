@@ -13,7 +13,6 @@ public class HelloApplication extends Application {
     //test
     @Override
     public void start(Stage stage) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
         // for the login scene put the size  410 , 500
         // for menu Scene put the size 500 , 600
