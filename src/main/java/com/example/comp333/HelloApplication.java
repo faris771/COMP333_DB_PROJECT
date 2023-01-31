@@ -14,9 +14,12 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600,500);
+        // for the login scene put the size  410 , 500
+        // for menu Scene put the size 500 , 600
+        Scene scene = new Scene(fxmlLoader.load(),  410,500);
         stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(e->{
             e.consume();
@@ -43,3 +46,4 @@ public class HelloApplication extends Application {
         launch();
     }
 }
+
