@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.MenuController">
     <children>
         <Pane layoutX="14.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
             <children>
@@ -112,7 +112,7 @@
             <Image url="@images/logout.png" />
          </image>
       </ImageView>
-      <Button layoutX="29.0" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #74889c;" text="Exit" textFill="#383333" wrapText="true">
+      <Button fx:id="ExitButton" layoutX="29.0" layoutY="80.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #74889c;" text="Exit" textFill="#383333" wrapText="true">
          <font>
             <Font name="Berlin Sans FB Bold" size="17.0" />
          </font>
