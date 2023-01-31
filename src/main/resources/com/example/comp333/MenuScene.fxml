@@ -109,7 +109,7 @@
       <Circle fill="WHITE" layoutX="59.0" layoutY="59.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fitHeight="42.0" fitWidth="47.0" layoutX="38.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Users/Admin/Desktop/images/logout.png" />
+            <Image url="@images/logout.png" />
          </image>
       </ImageView>
       <Button layoutX="29.0" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #74889c;" text="Exit" textFill="#383333" wrapText="true">
