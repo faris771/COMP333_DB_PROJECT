@@ -45,7 +45,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="SSN" GridPane.columnIndex="1">
+                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="First Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="First Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -65,7 +65,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="Father Name" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Father Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -75,7 +75,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="Family Name" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Family Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -85,7 +85,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="email" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" promptText="email" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="41.0" prefWidth="141.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" text="nationality" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField blendMode="SRC_ATOP" prefHeight="41.0" prefWidth="141.0" promptText="nationality" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="13.0" />
                      </font>
