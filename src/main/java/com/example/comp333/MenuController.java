@@ -8,15 +8,18 @@ public class MenuController {
     Stage stage = null;
     Scene scene = null;
     public  void  exitButton(ActionEvent event){
-        HelloApplication.changeScene ( event, "LogInScene.fxml", "Login" );
+        HelloApplication.changeScene ( event, "LogInScene.fxml", "Login" , 410 , 500);
     }
      // this method to enter the guest scene
     public  void  GuestButton(ActionEvent event ){
-        HelloApplication.changeScene ( event, "Guset.fxml", "Guest" );
+        HelloApplication.changeScene ( event, "Guset.fxml", "Guest" , 760 , 600);
     }
 
     public  void  serviceButton (ActionEvent event ) {
-        HelloApplication.changeScene ( event, "Services.fxml", "Service" );
+        HelloApplication.changeScene ( event, "Services.fxml", "Service" , 760 , 600);
+    }
+    public  void  PaymentButton (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "PaymentScene.fxml", "Payment",760 , 600 );
     }
 
 

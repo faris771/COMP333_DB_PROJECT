@@ -47,13 +47,13 @@ public class HelloApplication extends Application {
 
     }
 
-    public static void changeScene(ActionEvent event, String fxml_file, String title) {
+    public static void changeScene(ActionEvent event, String fxml_file, String title , int hight , int width) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader( HelloApplication.class.getResource(fxml_file));
             Stage stage1 = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
             // for log in Scene put the size 760 , 600
-            Scene scene1 = new Scene ( fxmlLoader.load (), 760, 800 );
+            Scene scene1 = new Scene ( fxmlLoader.load (), hight, width);
             stage1.setTitle(title);
             stage1.setScene( scene1 );
             stage1.setResizable(false);
