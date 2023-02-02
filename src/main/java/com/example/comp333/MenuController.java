@@ -1,47 +1,27 @@
 package com.example.comp333;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class MenuController {
-    private Stage stage ;
-    private Scene scene;
+    Stage stage = null;
+    Scene scene = null;
     public  void  exitButton(ActionEvent event){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            // for log in Scene put the size 500 , 600
-            scene = new Scene(fxmlLoader.load(), 410, 500);
-            stage.setTitle("Hotel DataBase!");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+        HelloApplication.changeScene ( event, "LogInScene.fxml", "Login" , 410 , 500);
     }
      // this method to enter the guest scene
     public  void  GuestButton(ActionEvent event ){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Guset.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            // for log in Scene put the size 760 , 600
-            scene = new Scene(fxmlLoader.load(), 760, 600);
-            stage.setTitle("Hotel DataBase!");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+        HelloApplication.changeScene ( event, "Guset.fxml", "Guest" , 760 , 600);
     }
+
+    public  void  serviceButton (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "Services.fxml", "Service" , 760 , 600);
+    }
+    public  void  PaymentButton (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "PaymentScene.fxml", "Payment",760 , 600 );
+    }
+
+
+
 }

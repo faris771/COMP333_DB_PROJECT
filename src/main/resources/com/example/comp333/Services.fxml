@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.HelloApplication">
+<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.ServiceController">
     <children>
         <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
             <children>
@@ -157,7 +157,7 @@
                     </font>
                 </Label>
 
-                <Button blendMode="SRC_ATOP" layoutX="24.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="24.0" layoutY="96.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
