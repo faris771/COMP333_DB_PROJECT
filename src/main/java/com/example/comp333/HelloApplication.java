@@ -15,12 +15,12 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Booking.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
         // for the login scene put the size  410 , 500
         // for menu Scene put the size 500 , 600
         // for guest scene use the size 760 , 600
         // for Services scene use the size 760 , 600
-        Scene scene = new Scene(fxmlLoader.load(),  760,600);
+        Scene scene = new Scene(fxmlLoader.load(),  410,500);
         stage.setTitle("Hotel DataBase!");
         stage.setScene(scene);
         stage.setResizable(false);

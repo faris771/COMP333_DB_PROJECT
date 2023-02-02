@@ -85,7 +85,7 @@
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" promptText="Room Status" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="149.0" promptText="Room Status" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
                                 <Font size="13.0" />
                             </font>

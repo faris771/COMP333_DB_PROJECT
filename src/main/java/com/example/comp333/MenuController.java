@@ -21,7 +21,9 @@ public class MenuController {
     public  void  PaymentButton (ActionEvent event ) {
         HelloApplication.changeScene ( event, "PaymentScene.fxml", "Payment",760 , 600 );
     }
-
+    public  void  BookingButton (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "Booking.fxml", "Booking",760 , 600 );
+    }
 
 
 }
