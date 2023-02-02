@@ -83,6 +83,7 @@
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
+                        <DatePicker fx:id="myDatePicker1" layoutX="153.0" layoutY="178.0" onAction="#getDate" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
