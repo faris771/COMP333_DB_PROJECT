@@ -59,7 +59,7 @@
         <Pane layoutX="209.0" layoutY="299.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
             <children>
                 <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
-                <Button layoutX="36.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="PAYMENT" textFill="#383333" wrapText="true">
+                <Button layoutX="36.0" layoutY="86.0" mnemonicParsing="false" onAction="#PaymentButton" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="PAYMENT" textFill="#383333" wrapText="true">
                     <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
