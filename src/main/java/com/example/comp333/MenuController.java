@@ -27,4 +27,21 @@ public class MenuController {
         }
 
     }
+     // this method to enter the guest scene
+    public  void  GuestButton(ActionEvent event ){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Guset.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            // for log in Scene put the size 760 , 600
+            scene = new Scene(fxmlLoader.load(), 760, 600);
+            stage.setTitle("Hotel DataBase!");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
 }
