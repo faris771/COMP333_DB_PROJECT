@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.HelloApplication">
+<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
    <children>
       <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
          <children>
@@ -185,7 +185,7 @@
                   <Image url="@images/guestwo.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton111" blendMode="SRC_ATOP" layoutX="24.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitGuestScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
