@@ -74,7 +74,7 @@
         <Pane layoutX="403.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
             <children>
                 <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
-                <Button layoutX="37.0" layoutY="86.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="SERVICE" textFill="#383333" wrapText="true">
+                <Button fx:id="serviceBtn" layoutX="37.0" layoutY="86.0" mnemonicParsing="false" onAction="#serviceButton" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #74889c;" text="SERVICE" textFill="#383333" wrapText="true">
                     <font>
                         <Font name="Berlin Sans FB Bold" size="17.0" />
                     </font>
