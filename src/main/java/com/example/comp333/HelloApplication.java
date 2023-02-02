@@ -23,6 +23,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
         stage.setOnCloseRequest(e->{
          //   e.consume();
             logout(stage);

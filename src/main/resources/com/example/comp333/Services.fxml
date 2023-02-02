@@ -5,9 +5,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -141,10 +138,10 @@
         </Pane>
         <TableView layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
             <columns>
-                <TableColumn prefWidth="76.79998779296875" text="ID" />
-                <TableColumn prefWidth="114.4000244140625" text="SERVICE_TYPE" />
-                <TableColumn prefWidth="114.39993286132812" text="SERVICE_COST" />
-                <TableColumn prefWidth="143.199951171875" text="SERVICE_DATE_TIME" />
+                <TableColumn prefWidth="60.0" text="ID" />
+                <TableColumn prefWidth="162.39999389648438" text="Service_Type" />
+                <TableColumn prefWidth="82.39996337890625" text="Service_Cost" />
+                <TableColumn prefWidth="143.199951171875" text="Date_Time" />
             </columns>
         </TableView>
         <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
@@ -159,7 +156,7 @@
                         <Font name="System Italic" size="17.0" />
                     </font>
                 </Label>
-                
+
                 <Button blendMode="SRC_ATOP" layoutX="24.0" layoutY="96.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
@@ -178,11 +175,6 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-            <ImageView fitHeight="50.0" fitWidth="87.0" layoutX="372.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="C:\COMP333_PROJECT1\src\main\resources\com\example\comp333\images\services.png" />
-               </image>
-            </ImageView>
             </children>
         </Pane>
     </children>
