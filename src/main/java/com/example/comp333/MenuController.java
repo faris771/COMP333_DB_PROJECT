@@ -24,6 +24,13 @@ public class MenuController {
     public  void  BookingButton (ActionEvent event ) {
         HelloApplication.changeScene ( event, "Booking.fxml", "Booking",760 , 600 );
     }
+    public  void  roomBtn (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "RoomScene.fxml", "Room",760 , 600 );
+    }
 
+    public  void  phoneBtn (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "RoomScene.fxml", "Room",760 , 600 );
+    }
 
 }
+

@@ -45,7 +45,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                  <TextField fx:id="SSN_field" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="First Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="firstNameField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="First Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -65,7 +65,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Father Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="fatherNameField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Father Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -75,7 +75,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Family Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="familyNameField" blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Family Name" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -85,7 +85,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" promptText="email" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="emailField" blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" promptText="email" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -95,14 +95,14 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="41.0" prefWidth="141.0" promptText="nationality" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="nationalityField" blendMode="SRC_ATOP" prefHeight="41.0" prefWidth="141.0" promptText="nationality" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
                </children>
             </GridPane>
-            <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -120,7 +120,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="loginButton1" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -138,7 +138,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="loginButton11" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -158,14 +158,14 @@
             </Button>
          </children>
       </Pane>
-      <TableView layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
+      <TableView fx:id="tableView" layoutX="307.0" layoutY="64.0" prefHeight="393.0" prefWidth="455.0">
         <columns>
-          <TableColumn prefWidth="60.0" text="SSN" />
-          <TableColumn prefWidth="88.0" text="First Name" />
-            <TableColumn prefWidth="93.0" text="Father Name" />
-            <TableColumn prefWidth="81.0" text="Family Name" />
-            <TableColumn prefWidth="56.0" text="email" />
-            <TableColumn prefWidth="71.0" text="nationality" />
+          <TableColumn fx:id="SSNCol" prefWidth="60.0" text="SSN" />
+          <TableColumn fx:id="firstNameCol" prefWidth="88.0" text="First Name" />
+            <TableColumn fx:id="fatherNameCol" prefWidth="93.0" text="Father Name" />
+            <TableColumn fx:id="familyNameCol" prefWidth="81.0" text="Family Name" />
+            <TableColumn fx:id="emailCol" prefWidth="56.0" text="email" />
+            <TableColumn fx:id="nationalityCol" prefWidth="71.0" text="nationality" />
         </columns>
       </TableView>
       <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
@@ -205,5 +205,11 @@
             </Button>
          </children>
       </Pane>
+      <Label layoutX="307.0" layoutY="31.0" text="Search guest" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchTextField" layoutX="399.0" layoutY="29.0" prefHeight="26.0" prefWidth="358.0" />
    </children>
 </AnchorPane>

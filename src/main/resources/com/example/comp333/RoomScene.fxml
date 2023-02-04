@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
+<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.RoomController">
     <children>
         <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
             <children>
@@ -92,7 +92,7 @@
                         </TextField>
                     </children>
                 </GridPane>
-                <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+                <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -110,7 +110,7 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-                <Button fx:id="loginButton1" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+                <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -128,7 +128,7 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-                <Button fx:id="loginButton11" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+                <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -169,7 +169,7 @@
                         <Image url="@images/room.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitGuestScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>

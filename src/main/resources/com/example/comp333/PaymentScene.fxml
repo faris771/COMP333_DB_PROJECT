@@ -19,7 +19,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.PaymentController">
    <children>
       <Pane layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
          <children>
@@ -77,7 +77,7 @@
                   </TextField>
                   <HBox prefHeight="76.0" prefWidth="166.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <RadioButton mnemonicParsing="false" prefHeight="73.0" prefWidth="92.0" text="Cash" textFill="WHITE">
+                        <RadioButton fx:id="paymentWayBtn" mnemonicParsing="false" prefHeight="73.0" prefWidth="92.0" text="Cash" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -91,7 +91,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="424.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="424.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -109,7 +109,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="loginButton1" blendMode="SRC_ATOP" layoutX="98.0" layoutY="473.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="473.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -127,7 +127,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="loginButton11" blendMode="SRC_ATOP" layoutX="98.0" layoutY="525.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="525.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -163,7 +163,7 @@
                   <Image url="@images/money-bag-emoji.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#exitGuestScene" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+            <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>

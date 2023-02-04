@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="573.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.DateController">
+<AnchorPane prefHeight="573.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.BookingController">
    <children>
       <AnchorPane layoutX="5.0" prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;">
          <children>
@@ -157,7 +157,7 @@
                         <Font name="System Italic" size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                  <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitBtn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                      <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                            <stops>

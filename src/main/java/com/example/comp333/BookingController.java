@@ -1,12 +1,18 @@
 package com.example.comp333;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 
-public class DateController {
+public class BookingController {
+
+
+
+    @FXML
+    private void exitBtn(ActionEvent event) {
+        HelloApplication.changeScene ( event, "MenuScene.fxml" , "Booking", 760, 600);
+    }
 
     @FXML
     private DatePicker myDatePicker;

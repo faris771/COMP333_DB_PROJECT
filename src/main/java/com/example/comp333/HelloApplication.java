@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 // Hamza Awashra
 import java.io.IOException;
@@ -47,13 +49,13 @@ public class HelloApplication extends Application {
 
     }
 
-    public static void changeScene(ActionEvent event, String fxml_file, String title , int hight , int width) {
+    public static void changeScene(ActionEvent event, String fxml_file, String title , int height , int width) {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader( HelloApplication.class.getResource(fxml_file));
             Stage stage1 = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
             // for log in Scene put the size 760 , 600
-            Scene scene1 = new Scene ( fxmlLoader.load (), hight, width);
+            Scene scene1 = new Scene ( fxmlLoader.load (), height, width);
             stage1.setTitle(title);
             stage1.setScene( scene1 );
             stage1.setResizable(false);
@@ -76,6 +78,11 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+    public static void clearTextFields(TextField... fields) {
+        for (TextField f : fields) {
+            f.clear ();
+        }
     }
 }
 

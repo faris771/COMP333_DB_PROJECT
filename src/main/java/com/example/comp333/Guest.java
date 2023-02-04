@@ -7,9 +7,10 @@ public class Guest {
     private String guestFamilyName;
     private String guestEmail;
     private String guestNationality;
-    private String guestPhone; //single phone number
 
-    public Guest(int guestSSN, String guestFirstName, String guestFatherName, String guestFamilyName, String guestEmail, String guestNationality, String guestPhone) {
+    static Guest gst;
+
+    public Guest(int guestSSN, String guestFirstName, String guestFatherName, String guestFamilyName, String guestEmail, String guestNationality) {
 
         this.guestSSN = guestSSN;
         this.guestFirstName = guestFirstName;
@@ -17,7 +18,6 @@ public class Guest {
         this.guestFamilyName = guestFamilyName;
         this.guestEmail = guestEmail;
         this.guestNationality = guestNationality;
-        this.guestPhone = guestPhone;
     }
 
     public int getGuestSSN() {
@@ -68,14 +68,6 @@ public class Guest {
         this.guestNationality = guestNationality;
     }
 
-    public String getGuestPhone() {
-        return guestPhone;
-    }
-
-    public void setGuestPhone(String guestPhone) {
-        this.guestPhone = guestPhone;
-    }
-
     @Override
     public String toString() {
         return "Guest{" +
@@ -84,9 +76,7 @@ public class Guest {
                 ", guestFatherName='" + guestFatherName + '\'' +
                 ", guestFamilyName='" + guestFamilyName + '\'' +
                 ", guestEmail='" + guestEmail + '\'' +
-                ", guestNationality='" + guestNationality + '\'' +
-                ", guestPhone='" + guestPhone + '\'' +
-                '}';
+                ", guestNationality='" + guestNationality + '\'' + '}';
     }
 
 

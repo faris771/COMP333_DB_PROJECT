@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
+<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.PhoneController">
     <children>
         <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
             <children>
@@ -87,7 +87,7 @@
                </font>
             </Label>
             <TextField layoutX="30.0" layoutY="253.0" prefHeight="30.0" prefWidth="203.0" promptText="EMPLOYEE ID" />
-                <Button fx:id="loginButton12" blendMode="SRC_ATOP" layoutX="92.0" layoutY="501.0" mnemonicParsing="false" onAction="#exitGuestScene" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="92.0" layoutY="501.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>

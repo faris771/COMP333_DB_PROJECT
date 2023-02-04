@@ -112,6 +112,6 @@
             </RadialGradient>
          </textFill>
       </Button>
-      <PasswordField fx:id="password" layoutX="185.0" layoutY="248.0" promptText="password" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 3px;" />
+      <PasswordField fx:id="password" layoutX="185.0" layoutY="248.0" onAction="#loginButtonOnAction" promptText="password" style="-fx-background-color: #808080; -fx-border-color: #2F4F4F; -fx-border-width: 3px;" />
    </children>
 </AnchorPane>
