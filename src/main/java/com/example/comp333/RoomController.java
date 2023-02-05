@@ -47,7 +47,7 @@ public class RoomController implements Initializable {
 
 
     public void exitButton(ActionEvent event) {
-        HelloApplication.changeScene ( event, "MenuScene.fxml", "Login", 600, 500 );
+        HelloApplication.changeScene ( event, "MenuScene.fxml", "Login", 600, 562 );
     }
 
 

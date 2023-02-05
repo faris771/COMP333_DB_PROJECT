@@ -62,7 +62,7 @@ public class BookingController implements Initializable {
     @FXML
     // Delete booking from database
     private void exitBtn(ActionEvent event) {
-        HelloApplication.changeScene ( event, "MenuScene.fxml" , "Booking", 760, 600);
+        HelloApplication.changeScene ( event, "MenuScene.fxml" , "Booking", 600, 562);
     }
 
     @Override

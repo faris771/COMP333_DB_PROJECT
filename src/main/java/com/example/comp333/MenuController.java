@@ -38,6 +38,9 @@ public class MenuController {
     public  void  phoneBtn (ActionEvent event ) {
         HelloApplication.changeScene ( event, "Phone_empScene.fxml", "Phones of employees",760 , 600 );
     }
+    public  void  ServiceToRoomBtn (ActionEvent event ) {
+        HelloApplication.changeScene ( event, "ServiceToRoom.fxml", "Service To Room",720 , 600 );
+    }
 
 }
 

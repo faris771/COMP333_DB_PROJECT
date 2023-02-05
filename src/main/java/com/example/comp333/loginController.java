@@ -63,7 +63,7 @@ public class loginController {
                     tryAgainLabel.setText ( "WELCOME" );
                     tryAgainLabel.setTextFill ( Color.GREEN );
 
-                    HelloApplication.changeScene (event, "MenuScene.fxml","Hotel DataBase!" ,600,500 );
+                    HelloApplication.changeScene (event, "MenuScene.fxml","Hotel DataBase!" ,600,562 );
 
                 } else {
                     tryAgainLabel.setText ( "Please enter valid username and password" );

@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.MenuController">
     <children>
         <Pane layoutX="14.0" layoutY="169.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
             <children>
@@ -117,5 +117,20 @@
             <Font name="Berlin Sans FB Bold" size="17.0" />
          </font>
       </Button>
+      <Pane layoutX="209.0" layoutY="426.0" prefHeight="122.0" prefWidth="182.0" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 5px;">
+         <children>
+            <Circle fill="#eaedef" layoutX="91.0" layoutY="43.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button layoutY="87.0" mnemonicParsing="false" onAction="#ServiceToRoomBtn" prefHeight="36.0" prefWidth="182.0" style="-fx-background-color: #74889c;" text="SERVICE TO ROOM" textFill="#383333" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="17.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="54.0" fitWidth="71.0" layoutX="63.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/serviceToRoom.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

@@ -8,7 +8,7 @@ public class PhoneController {
         Stage stage = new Stage ();
         Scene scene = null;
         public  void  exitButton(ActionEvent event){
-            HelloApplication.changeScene ( event, "MenuScene.fxml", "Login", 600 ,500 );
+            HelloApplication.changeScene ( event, "MenuScene.fxml", "Login", 600 ,562 );
         }
 
 }

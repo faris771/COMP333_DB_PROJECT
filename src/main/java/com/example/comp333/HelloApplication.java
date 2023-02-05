@@ -21,7 +21,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("LogInScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("logInScene.fxml"));
 
         // for guest scene use the size 760 , 600
         // for Services scene use the size 760 , 600
