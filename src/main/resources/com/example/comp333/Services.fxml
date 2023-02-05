@@ -98,7 +98,7 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-                <Button fx:id="updateButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+                <Button fx:id="updateButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>

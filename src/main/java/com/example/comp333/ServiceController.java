@@ -52,7 +52,7 @@ public class ServiceController {
 //                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "password");
                 preparedStatement = connection.prepareStatement("INSERT INTO  SERVICE VALUES (?,?,?)");
 
-                preparedStatement.setString(1,  dummyService.getServiceID()+ "");
+                preparedStatement.setString(1, dummyService.getServiceID() + "");
                 preparedStatement.setString(2, dummyService.getServiceType());
                 preparedStatement.setString(3, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
                 preparedStatement.execute();
@@ -75,17 +75,20 @@ public class ServiceController {
     @FXML
     private void deleteBtnOnAction(ActionEvent event) throws SQLException {
 
-        int SSN = Integer.parseInt(seviceIDField.getText());
+        int tobeDeletedServiceID = Integer.parseInt(seviceIDField.getText());
 
-        if (checkIfServiceEXists(SSN)) {
+        if (checkIfServiceEXists(tobeDeletedServiceID)) {
 
             try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "password");
-                PreparedStatement ps = connection.prepareStatement("DELETE FROM guest WHERE Guest_SSN = ?");
-                ps.setString(1, SSN + "");
+                DataBaseConnection connectNow = new DataBaseConnection();
+                Connection connection = connectNow.getConnection();
+                PreparedStatement ps = connection.prepareStatement("DELETE FROM SERVICE WHERE service_id  = ?");
+
+
+                ps.setString(1, tobeDeletedServiceID + "");
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Are you sure you want to delete the guest?");
+                alert.setContentText("Are you sure you want to delete the service?");
                 alert.setHeaderText("Please confirm your action");
 
                 Optional<ButtonType> result = alert.showAndWait(); // ??
@@ -94,16 +97,46 @@ public class ServiceController {
                     ps.execute();
                 }
 
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         } else {
             HelloApplication.AlertShow("Error, no such guest exists!", "Guest not found!!", Alert.AlertType.ERROR);
         }
 
     }
+
+    @FXML
+    private void updateBtnOnAction(ActionEvent event) throws SQLException {
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connection = connectNow.getConnection();
+        PreparedStatement preparedStatement = null;
+
+        try {
+            Service dummyService = new Service(Integer.parseInt(seviceIDField.getText()), serviceTypeField.getText(),
+                    Double.parseDouble(servicePriceField.getText()));
+
+            if (checkIfServiceEXists(dummyService.getServiceID())) {
+
+                preparedStatement = connection.prepareStatement("UPDATE SERVICE SET service_type = ?, service_price = ? WHERE service_id = ?");
+
+                preparedStatement.setString(1, dummyService.getServiceType());
+                preparedStatement.setString(2, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
+                preparedStatement.setString(3, dummyService.getServiceID() + "");
+                preparedStatement.execute();
+
+            } else {
+                HelloApplication.clearTextFields(seviceIDField);
+                HelloApplication.AlertShow("Error, no such service exists!", "Service not found!!", Alert.AlertType.ERROR);
+
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
 
 
     private boolean checkIfServiceEXists(int serviceID) throws SQLException {
