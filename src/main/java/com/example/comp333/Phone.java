@@ -2,20 +2,21 @@ package com.example.comp333;
 
 public class Phone {
 
-    private int SSN;
+
+    private int employeeID;
     private String phoneNumber;
 
-    public Phone(int SSN, String phoneNumber) {
-        this.SSN = SSN;
+    public Phone( String phoneNumber, int employeeID) {
+        this.employeeID = employeeID;
         this.phoneNumber = phoneNumber;
     }
 
-    public int getSSN() {
-        return SSN;
+    public int getEmployeeID() {
+        return employeeID;
     }
 
-    public void setSSN(int SSN) {
-        this.SSN = SSN;
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public String getPhoneNumber() {
