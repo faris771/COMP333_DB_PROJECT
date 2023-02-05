@@ -28,7 +28,7 @@ public class HelloApplication extends Application {
         stage.show();
 
         stage.setOnCloseRequest(e->{
-         //   e.consume();
+            e.consume();
             logout(stage);
         });
     }

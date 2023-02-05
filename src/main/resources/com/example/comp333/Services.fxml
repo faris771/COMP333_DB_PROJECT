@@ -33,7 +33,6 @@
                         <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="60.40001220703125" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="44.39998779296876" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="55.600018310546886" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="18.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="68.0" minHeight="1.7999755859374886" prefHeight="1.7999755859374886" vgrow="SOMETIMES" />
                     </rowConstraints>
@@ -43,7 +42,7 @@
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                        <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID (optional in adding)" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                             <font>
                                 <Font size="13.0" />
                             </font>
@@ -64,16 +63,6 @@
                             </font>
                         </Label>
                         <TextField fx:id="servicePriceField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Service Price" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Date_Time" textFill="WHITE" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="serviceDateTimeField" blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Date_Time" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font size="13.0" />
                             </font>
@@ -136,12 +125,11 @@
                 </Button>
             </children>
         </Pane>
-        <TableView layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
+        <TableView fx:id="tableView" layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
             <columns>
-                <TableColumn prefWidth="60.0" text="ID" />
-                <TableColumn prefWidth="162.39999389648438" text="Service_Type" />
-                <TableColumn prefWidth="82.39996337890625" text="Service_Cost" />
-                <TableColumn prefWidth="143.199951171875" text="Date_Time" />
+                <TableColumn fx:id="serviceIDCol" prefWidth="158.0" text="ID" />
+                <TableColumn fx:id="serviceTypeCol" prefWidth="142.0" text="Service_Type" />
+                <TableColumn fx:id="servicePriceCol" prefWidth="140.0" text="Service_Price" />
             </columns>
         </TableView>
         <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">

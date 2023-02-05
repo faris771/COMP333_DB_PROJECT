@@ -1,19 +1,27 @@
 package com.example.comp333;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.*;
 import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class ServiceController {
+public class ServiceController implements Initializable {
     Stage stage = new Stage();
     Scene scene = null;
 
@@ -34,28 +42,90 @@ public class ServiceController {
     @FXML
     private Button deleteButton;
 
+    // talbeview stuff
+    @FXML
+    private TableView<Service> tableView;
+    @FXML
+    private TableColumn<Service, Integer> serviceIDCol;
+    @FXML
+    private TableColumn<Service, String> serviceTypeCol;
+    @FXML
+    private TableColumn<Service, Integer> servicePriceCol;
+    private ObservableList<Service> serviceObservableListList = FXCollections.observableArrayList();
+
 
     // buttons actions
     @FXML
     private void addBtnOnAction(ActionEvent event) throws SQLException {
         DataBaseConnection connectNow = new DataBaseConnection();
 
-        Connection connection = connectNow.getConnection(); // COULD BE CHANGED WITH THE  DataBaseConnection class
-        PreparedStatement preparedStatement = null;
+        Connection connection = connectNow.getConnection(); // connection to the database
+        PreparedStatement preparedStatement = null; // to execute the query
+        Service dummyService = null; // to store the data from the text fields
 
+        boolean flag = false;
         try {
-            Service dummyService = new Service(Integer.parseInt(seviceIDField.getText()), serviceTypeField.getText(),
-                    Double.parseDouble(servicePriceField.getText()));
+
+            String tstIfEmpty = (seviceIDField.getText());
+            int serviceID;
+
+            if(tstIfEmpty.isEmpty()) {
+                serviceID = 420;
+            } else {
+                serviceID = Integer.parseInt(seviceIDField.getText());
+                flag = true;
+            }
+
+            if (serviceTypeField.getText().isBlank() || servicePriceField.getText().isBlank()) {
+
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Please fill the required fields");
+                alert.setContentText("");
+                alert.showAndWait();
+                return;
+            }
+
+//            if (seviceIDField.getText().isBlank()) {
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error");
+//                alert.setHeaderText("Please fill all the fields");
+//                alert.setContentText("");
+//                alert.showAndWait();
+//                flag = true;
+//                serviceID = 420;
+//
+//                return;
+//            }
+
+            try {
+                dummyService = new Service(serviceID, serviceTypeField.getText(),
+                        Double.parseDouble(servicePriceField.getText()));
+
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error");
+                alert.setContentText("Please enter a valid service ID and price");
+                alert.showAndWait();
+                return;
+            }
 
             if (!checkIfServiceEXists(dummyService.getServiceID())) {
+                preparedStatement = connection.prepareStatement("INSERT INTO  SERVICE (service_type, service_price) VALUES (?,?)");
 
-//                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "password");
-                preparedStatement = connection.prepareStatement("INSERT INTO  SERVICE VALUES (?,?,?)");
 
-                preparedStatement.setString(1, dummyService.getServiceID() + "");
-                preparedStatement.setString(2, dummyService.getServiceType());
-                preparedStatement.setString(3, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
+//                if (serviceID == 420) {
+//                    preparedStatement.setString(1, "DEFAULT");
+//                } else {
+//                    preparedStatement.setString(1, dummyService.getServiceID() + "");
+//                }
+
+                preparedStatement.setString(1, dummyService.getServiceType());
+                preparedStatement.setString(2, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
                 preparedStatement.execute();
+                HelloApplication.AlertShow("Service Added Successfully", "ADDED ", Alert.AlertType.INFORMATION);
+
 
             } else {
                 HelloApplication.clearTextFields(seviceIDField);
@@ -70,14 +140,28 @@ public class ServiceController {
             ex.printStackTrace();
             ex.getCause();
         }
+        serviceObservableListList.clear(); // clear the list to avoid duplicates when adding new data to the table
+        tableView.refresh(); // guess it's useless but keep it
+
+        REFRESH();
+
     }
 
     @FXML
     private void deleteBtnOnAction(ActionEvent event) throws SQLException {
 
-        int tobeDeletedServiceID = Integer.parseInt(seviceIDField.getText());
+        if (seviceIDField.getText().isBlank()) { // if the text field is empty then return
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("ID IS EMPTY");
+            alert.setContentText("");
+            alert.showAndWait();
+            return;
+        }
+        int tobeDeletedServiceID = Integer.parseInt(seviceIDField.getText()); // get the ID from the text field
 
-        if (checkIfServiceEXists(tobeDeletedServiceID)) {
+
+        if (checkIfServiceEXists(tobeDeletedServiceID)) { // if the service exists then delete it
 
             try {
                 DataBaseConnection connectNow = new DataBaseConnection();
@@ -91,9 +175,9 @@ public class ServiceController {
                 alert.setContentText("Are you sure you want to delete the service?");
                 alert.setHeaderText("Please confirm your action");
 
-                Optional<ButtonType> result = alert.showAndWait(); // ??
+                Optional<ButtonType> result = alert.showAndWait(); // wait for the user to click on the button
 
-                if (result.isPresent() && result.get() == ButtonType.OK) {
+                if (result.isPresent() && result.get() == ButtonType.OK) { // if the user clicked on the OK button then delete the service
                     ps.execute();
                 }
 
@@ -101,8 +185,12 @@ public class ServiceController {
                 e.printStackTrace();
             }
         } else {
-            HelloApplication.AlertShow("Error, no such guest exists!", "Guest not found!!", Alert.AlertType.ERROR);
+            HelloApplication.AlertShow("Error, no such guest exists!", "Guest not found!!", Alert.AlertType.ERROR); // if the service does not exist then show an error message
         }
+        serviceObservableListList.clear();
+
+        tableView.refresh();
+        REFRESH();
 
     }
 
@@ -111,6 +199,16 @@ public class ServiceController {
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connection = connectNow.getConnection();
         PreparedStatement preparedStatement = null;
+        if (serviceTypeField.getText().isBlank() || servicePriceField.getText().isBlank() || seviceIDField.getText().isBlank()) { // if the text field is empty then return
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Please fill all the fields");
+            alert.setContentText("");
+            alert.showAndWait();
+            return;
+        }
+
+
 
         try {
             Service dummyService = new Service(Integer.parseInt(seviceIDField.getText()), serviceTypeField.getText(),
@@ -135,11 +233,14 @@ public class ServiceController {
             ex.printStackTrace();
             ex.getCause();
         }
+        serviceObservableListList.clear();
+        tableView.refresh();
+        REFRESH();
+
     }
 
 
-
-    private boolean checkIfServiceEXists(int serviceID) throws SQLException {
+    private boolean checkIfServiceEXists(int serviceID) throws SQLException { // check if the service exists in the database
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connection = connectNow.getConnection();
         PreparedStatement preparedStatement = null;
@@ -172,5 +273,60 @@ public class ServiceController {
         HelloApplication.changeScene(event, "MenuScene.fxml", "Login", 600, 500);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) { // initialize the table view
+        DataBaseConnection connection = new DataBaseConnection();
+        String guestShowQuery = "SELECT * FROM Service";
+        try {
 
+            Connection connectDB = connection.getConnection();
+            Statement statement = connectDB.createStatement();
+            ResultSet queryRes = statement.executeQuery(guestShowQuery);
+            while (queryRes.next()) {
+                int serviceID = (queryRes.getInt("service_id"));
+                String serviceType = queryRes.getString("service_type");
+                double servicePrice = (queryRes.getDouble("service_price"));
+                serviceObservableListList.add(new Service(serviceID, serviceType, servicePrice));
+
+            }
+            serviceIDCol.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
+            serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
+            servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("servicePrice"));
+            tableView.setItems(serviceObservableListList);
+
+        } catch (SQLException e) {
+            Logger.getLogger(GuestController.class.getName()).log(Level.SEVERE, null, e);
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void REFRESH() { // refresh the table view
+        DataBaseConnection connection = new DataBaseConnection();
+        String guestShowQuery = "SELECT * FROM Service";
+        try {
+
+            Connection connectDB = connection.getConnection();
+            Statement statement = connectDB.createStatement();
+            ResultSet queryRes = statement.executeQuery(guestShowQuery);
+            while (queryRes.next()) {
+                int serviceID = (queryRes.getInt("service_id"));
+                String serviceType = queryRes.getString("service_type");
+                double servicePrice = (queryRes.getDouble("service_price"));
+                serviceObservableListList.add(new Service(serviceID, serviceType, servicePrice));
+
+            }
+            serviceIDCol.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
+            serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
+            servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("servicePrice"));
+            tableView.setItems(serviceObservableListList);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }
