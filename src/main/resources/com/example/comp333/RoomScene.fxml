@@ -8,10 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -19,157 +16,42 @@
 
 <AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.RoomController">
     <children>
-        <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
+        <Pane prefHeight="596.0" prefWidth="277.0" style="-fx-background-color: #2F4F4F;">
             <children>
-                <Label layoutX="98.0" layoutY="14.0" prefHeight="50.0" prefWidth="111.0" style="-fx-background-color: #F5DEB3;" text="ROOM" textFill="#321b1b">
+                <Label layoutX="4.0" layoutY="6.0" prefHeight="58.0" prefWidth="67.0" style="-fx-background-color: #F5DEB3;" text="ROOM" textFill="#321b1b">
                     <font>
-                        <Font name="System Italic" size="34.0" />
+                        <Font name="System Italic" size="23.0" />
                     </font>
                 </Label>
-                <GridPane layoutX="5.0" layoutY="64.0" prefHeight="304.0" prefWidth="303.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="62.400018310546876" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="51.199981689453125" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="59.80002441406252" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="89.4" minHeight="10.0" prefHeight="47.79999389648438" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="91.79998779296878" minHeight="10.0" prefHeight="70.20001220703128" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="68.0" minHeight="9.400012207031239" prefHeight="9.400012207031239" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label prefHeight="22.0" prefWidth="131.0" text="Room Number" textFill="WHITE">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Room Number" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="22.0" prefWidth="119.0" text="Room Price" textFill="#f5f5f5" GridPane.rowIndex="1">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="Room Price" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="22.0" prefWidth="142.0" text="Number Of Beds " textFill="WHITE" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Number Of Beds " style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Room Type" textFill="WHITE" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Room Type" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Room Status" textFill="WHITE" GridPane.rowIndex="4">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="149.0" promptText="Room Status" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                    </children>
-                </GridPane>
-                <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
-                    <textFill>
-                        <RadialGradient centerX="0.5" radius="0.5">
-                            <stops>
-                                <Stop>
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                                <Stop offset="1.0">
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                            </stops>
-                        </RadialGradient>
-                    </textFill>
-                </Button>
-                <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
-                    <textFill>
-                        <RadialGradient centerX="0.5" radius="0.5">
-                            <stops>
-                                <Stop>
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                                <Stop offset="1.0">
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                            </stops>
-                        </RadialGradient>
-                    </textFill>
-                </Button>
-                <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
-                    <textFill>
-                        <RadialGradient centerX="0.5" radius="0.5">
-                            <stops>
-                                <Stop>
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                                <Stop offset="1.0">
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                            </stops>
-                        </RadialGradient>
-                    </textFill>
-                </Button>
+            <Label layoutX="100.0" layoutY="22.0" text="Search room" textFill="#fff6f6">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
-        <TableView layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
+        <TableView fx:id="roomTableView" layoutX="-1.0" layoutY="71.0" prefHeight="406.0" prefWidth="766.0">
             <columns>
-                <TableColumn prefWidth="101.5999755859375" text="ROOM NUMBER" />
-                <TableColumn prefWidth="76.0" text=" PRICE" />
-                <TableColumn prefWidth="124.80001831054688" text="NUMBER OF BEDS" />
-                <TableColumn prefWidth="48.79998779296875" text="TYPE" />
-                <TableColumn prefWidth="98.4000244140625" text="ROOM STATUS" />
+                <TableColumn fx:id="roomNumCol" prefWidth="104.0" text="ROOM NUMBER" />
+                <TableColumn fx:id="roomPriceCol" prefWidth="119.99993896484375" text=" PRICE" />
+                <TableColumn fx:id="roomNumOfBedsCol" prefWidth="173.5999755859375" text="NUMBER OF BEDS" />
+                <TableColumn fx:id="roomTypeCol" prefWidth="116.00006103515625" text="TYPE" />
+                <TableColumn fx:id="roomStatusCol" prefWidth="252.79998779296875" text="ROOM STATUS" />
             </columns>
         </TableView>
-        <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
+        <Pane layoutY="477.0" prefHeight="122.0" prefWidth="765.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
             <children>
-                <Label layoutX="31.0" layoutY="21.0" prefHeight="50.0" prefWidth="413.0" text="&quot;Kick off your shoes, relax and make yourself at home&quot; " textFill="WHITE">
+                <Label layoutX="31.0" layoutY="14.0" prefHeight="50.0" prefWidth="413.0" text="&quot;Kick off your shoes, relax and make yourself at home&quot; " textFill="WHITE">
                     <font>
                         <Font name="System Italic" size="17.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="57.0" fitWidth="59.0" layoutX="384.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="67.0" fitWidth="86.0" layoutX="444.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/room.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="61.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="42.0" prefWidth="143.0" style="-fx-background-color: #F5DEB3;" text="Back">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -189,5 +71,6 @@
                 </Button>
             </children>
         </Pane>
+      <TextField fx:id="searchTextField" layoutX="220.0" layoutY="25.0" prefHeight="28.0" prefWidth="531.0" promptText="type keywords.." />
     </children>
 </AnchorPane>

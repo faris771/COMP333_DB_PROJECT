@@ -12,8 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 // Hamza Awashra
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 // testing pull
 public class HelloApplication extends Application {
+    public static DateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
 
     @Override
     public void start(Stage stage) throws IOException {

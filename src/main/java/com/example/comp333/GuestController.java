@@ -1,5 +1,4 @@
 package com.example.comp333;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -42,6 +41,7 @@ public class GuestController implements Initializable {
     @FXML
     private TextField nationalityField;
 
+    // tableView for guest data
     @FXML
     private TableView<Guest> tableView;
 
@@ -63,6 +63,7 @@ public class GuestController implements Initializable {
     @FXML
     TableColumn<Guest, String> nationalityCol;
 
+    // observable List
     ObservableList<Guest> guestObservableList = FXCollections.observableArrayList ();
 
     public  void  exitGuestScene(ActionEvent event) {
@@ -70,7 +71,41 @@ public class GuestController implements Initializable {
     }
 
     @FXML
+    private void fillFieldsWithSearchRes (ActionEvent event) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
 
+            int SSN = Integer.parseInt ( SSN_field.getText () );
+            // guest exists in the database
+            if (checkIfGuestExists ( SSN )) {
+                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
+
+                // get guest data
+                preparedStatement = connection.prepareStatement ( "SELECT * FROM guest G WHERE G.Guest_SSN = ?" );
+                preparedStatement.setString ( 1, SSN + "" );
+
+                // exec the query to get guest data for updating
+                ResultSet rs1 = preparedStatement.executeQuery ();
+
+                // here we have old guest information in text fields, we can overwrite them to update.
+               while (rs1.next ()) {
+                   SSN_field.setText ( rs1.getInt ( "Guest_SSN" ) + "" );
+                   firstNameField.setText ( rs1.getString ( "Guest_first_Name" ) );
+                   fatherNameField.setText ( rs1.getString ( "Guest_father_Name" ) );
+                   familyNameField.setText ( rs1.getString ( "Guest_family_Name" ) );
+                   emailField.setText ( rs1.getString ( "Guest_email" ) );
+                   nationalityField.setText ( rs1.getString ( "Guest_nationality" ) );
+               }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace ();
+            e.getCause ();
+        }
+
+    }
+
+    @FXML
     private void addBtnOnAction (ActionEvent event) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -78,6 +113,7 @@ public class GuestController implements Initializable {
             Guest.gst = new Guest ( Integer.parseInt ( SSN_field.getText () ), firstNameField.getText (),
                     fatherNameField.getText (), familyNameField.getText (), emailField.getText (), nationalityField.getText ());
 
+            // guest doesn't exist, we can add.
             if (! checkIfGuestExists ( Guest.gst.getGuestSSN () )) {
 
                 connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
@@ -90,7 +126,9 @@ public class GuestController implements Initializable {
                 preparedStatement.setString(5, Guest.gst.getGuestEmail ());
                 preparedStatement.setString ( 6, Guest.gst.getGuestNationality () );
                 preparedStatement.execute ();
+                tableView.refresh();
             }
+            // guest exists already.
             else {
                 HelloApplication.clearTextFields ( SSN_field );
                 HelloApplication.AlertShow ( "Error, a guest with this SSN already exists", "duplicate SSN", Alert.AlertType.ERROR );
@@ -105,40 +143,81 @@ public class GuestController implements Initializable {
         }
     }
     @FXML
+    // update guest data
     private void deleteBtnOnAction (ActionEvent event) {
 
-        int SSN = Integer.parseInt ( SSN_field.getText () );
+        DataBaseConnection connection = new DataBaseConnection ();
+        String bookingDeleteQuery = "DELETE FROM booking WHERE Booking_id = " + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
+        try {
+            Connection connectDB = connection.getConnection ();
+            Statement statement = connectDB.createStatement ();
 
-        if (checkIfGuestExists ( SSN )) {
+            PreparedStatement ps = connectDB.prepareStatement ( bookingDeleteQuery);
 
-            try {
-                Connection connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
-                PreparedStatement ps = connection.prepareStatement ( "DELETE FROM guest WHERE Guest_SSN = ?" );
-                ps.setString ( 1, SSN + "" );
+            Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
+            alert.setContentText ( "Are you sure you want to delete the guest?" );
+            alert.setHeaderText ( "Please confirm your action" );
 
-                Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
-                alert.setContentText ( "Are you sure you want to delete the guest?" );
-                alert.setHeaderText ( "Please confirm your action" );
+            Optional<ButtonType> result = alert.showAndWait();
 
-                Optional<ButtonType> result = alert.showAndWait();
-
-                if ( result.isPresent () && result.get() == ButtonType.OK) {
-                    ps.execute ();
-                }
-
-
-            } catch (SQLException e) {
-                e.printStackTrace ();
+            // if the user confirms the deletion
+            if ( result.isPresent () && result.get() == ButtonType.OK) {
+                ps.execute ();
+                tableView.refresh();
             }
 
 
-
-        } else {
-            HelloApplication.AlertShow ( "Error, no such guest exists!", "Guest not found!!", Alert.AlertType.ERROR );
+        } catch (Exception e) {
+            e.printStackTrace ();
+            e.getCause ();
         }
+
+
+
 
     }
 
+
+    @FXML
+    // update guest data
+    private void updateBtnOnAction(ActionEvent event) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+
+                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
+                preparedStatement = connection.prepareStatement ( "UPDATE guest G SET G.Guest_first_Name = ?," +
+                        " G.Guest_father_Name = ?, G.Guest_family_Name = ?, " +
+                        "G.Guest_email = ?, G.Guest_nationality = ? where Guest_SSn = ? ");
+
+                preparedStatement.setString ( 1, firstNameField.getText ());
+                preparedStatement.setString ( 2, fatherNameField.getText ());
+                preparedStatement.setString ( 3, familyNameField.getText ());
+                preparedStatement.setString ( 4, emailField.getText ());
+                preparedStatement.setString ( 5, nationalityField.getText ());
+                preparedStatement.setInt ( 6, Integer.parseInt ( SSN_field.getText () ));
+
+                Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
+                alert.setContentText ( "Are you sure you want to update the guest data?" );
+                alert.setHeaderText ( "Please confirm your action" );
+
+                Optional<ButtonType> result = alert.showAndWait();
+                // if the user confirms the update action
+                if ( result.isPresent () && result.get() == ButtonType.OK) {
+                    preparedStatement.execute ();
+                    tableView.refresh();
+
+                }
+
+        } catch (SQLException e) {
+            e.printStackTrace ();
+            e.getCause ();
+        }
+
+
+
+    }
 
 
     private boolean checkIfGuestExists(int SSN) {
@@ -152,15 +231,18 @@ public class GuestController implements Initializable {
             preparedStatement.setString ( 1, SSN + "" );
             ResultSet rs = preparedStatement.executeQuery ();
 
+            // if the result set is not empty, the guest exists.
             return rs.isBeforeFirst ();
 
         } catch (SQLException e) {
             e.printStackTrace ();
         }
+        // if the result set is empty, the guest doesn't exist.
         return false;
     }
 
     @Override
+    // initialize the table view
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         DataBaseConnection connection = new DataBaseConnection ();
@@ -175,7 +257,6 @@ public class GuestController implements Initializable {
 
             while (queryRes.next ()) {
 
-
                 int SSN = queryRes.getInt ( "Guest_SSN" );
                 String fname = queryRes.getString ( "Guest_first_Name" );
                 String mname = queryRes.getString ( "Guest_father_Name" );
@@ -189,7 +270,6 @@ public class GuestController implements Initializable {
             firstNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFirstName"));
             fatherNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFatherName"));
             familyNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFamilyName"));
-
             emailCol.setCellValueFactory ( new PropertyValueFactory<> ("guestEmail"));
             nationalityCol.setCellValueFactory ( new PropertyValueFactory<> ("guestNationality"));
 
@@ -224,6 +304,7 @@ public class GuestController implements Initializable {
                 } );
             } );
 
+            // wrap the FilteredList in a SortedList.
             SortedList <Guest> sortedList = new SortedList<> ( filteredData );
             sortedList.comparatorProperty ().bind ( tableView.comparatorProperty () );
             tableView.setItems ( filteredData );
@@ -236,9 +317,6 @@ public class GuestController implements Initializable {
         catch (Exception e) {
             e.printStackTrace ();
         }
-
-
-
 
 
 

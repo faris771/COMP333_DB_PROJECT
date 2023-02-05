@@ -24,12 +24,12 @@
          <children>
             <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="596.0" prefWidth="300.0" style="-fx-background-color: #2F4F4F;">
                <children>
-                  <Label layoutX="69.0" layoutY="37.0" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: #F5DEB3;" text="Booking" textFill="#321b1b">
+                  <Label layoutX="69.0" layoutY="23.0" prefHeight="52.0" prefWidth="124.0" style="-fx-background-color: #F5DEB3;" text="Booking" textFill="#321b1b">
                      <font>
                         <Font name="System Italic" size="34.0" />
                      </font>
                   </Label>
-                  <GridPane layoutX="2.0" layoutY="87.0" prefHeight="266.0" prefWidth="293.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
+                  <GridPane layoutX="2.0" layoutY="101.0" prefHeight="262.0" prefWidth="293.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="141.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="148.0" />
@@ -39,54 +39,43 @@
                         <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="172.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="172.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="172.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label prefHeight="21.0" prefWidth="123.0" text="Booking ID" textFill="WHITE">
+                        <Label prefHeight="21.0" prefWidth="91.0" text="Guest SSN" textFill="#f5f5f5">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="164.0" promptText="ID" style="-fx-background-color: #80080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                        <TextField fx:id="SSNTextField" blendMode="SRC_ATOP" prefHeight="29.0" prefWidth="148.0" promptText="SSN" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </TextField>
-                        <Label prefHeight="21.0" prefWidth="91.0" text="Guest SSN" textFill="#f5f5f5" GridPane.rowIndex="1">
+                        <Label prefHeight="26.0" prefWidth="141.0" text="Room Number" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="29.0" prefWidth="148.0" promptText="SSN" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="roomNumberTextField" blendMode="SRC_ATOP" prefHeight="28.0" prefWidth="148.0" promptText="Room Number" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </TextField>
-                        <Label prefHeight="26.0" prefWidth="141.0" text="Room Number" textFill="WHITE" GridPane.rowIndex="2">
+                        <Label layoutX="12.0" layoutY="108.0" prefHeight="26.0" prefWidth="141.0" text="Start Date" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="28.0" prefWidth="148.0" promptText="Room Number" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </TextField>
-                        <Label layoutX="12.0" layoutY="108.0" prefHeight="26.0" prefWidth="141.0" text="Start Date" textFill="WHITE" GridPane.rowIndex="3">
+                        <DatePicker fx:id="startDatePicker" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label layoutX="12.0" layoutY="140.0" prefHeight="26.0" prefWidth="141.0" text="End Date" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="myDatePicker" onAction="#getDate" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label layoutX="12.0" layoutY="140.0" prefHeight="26.0" prefWidth="141.0" text="End Date" textFill="WHITE" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="17.0" />
-                           </font>
-                        </Label>
-                        <DatePicker fx:id="myDatePicker1" layoutX="153.0" layoutY="178.0" onAction="#getDate" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <DatePicker fx:id="endDatePicker" layoutX="153.0" layoutY="178.0" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <Button fx:id="loginButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+                  <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addBooking" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                      <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                            <stops>
@@ -104,7 +93,7 @@
                         </RadialGradient>
                      </textFill>
                   </Button>
-                  <Button fx:id="loginButton1" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+                  <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateBooking" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                      <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                            <stops>
@@ -122,7 +111,7 @@
                         </RadialGradient>
                      </textFill>
                   </Button>
-                  <Button fx:id="loginButton11" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+                  <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" onAction="#deleteBooking" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                      <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                            <stops>
@@ -142,12 +131,12 @@
                   </Button>
                </children>
             </Pane>
-            <TableView layoutX="306.0" prefHeight="456.0" prefWidth="455.0">
+            <TableView fx:id="bookingTableView" layoutX="306.0" prefHeight="456.0" prefWidth="455.0">
                <columns>
-                  <TableColumn prefWidth="108.0" text="Booking ID" />
-                  <TableColumn prefWidth="110.0" text="Guest SSN" />
-                  <TableColumn prefWidth="115.0" text="Start Date" />
-                  <TableColumn prefWidth="121.0" text="End Date" />
+                  <TableColumn fx:id="IDCol" prefWidth="108.0" text="Booking ID" />
+                  <TableColumn fx:id="SSNCol" prefWidth="110.0" text="Guest SSN" />
+                  <TableColumn fx:id="startDateCol" prefWidth="115.0" text="Start Date" />
+                  <TableColumn fx:id="endDateCol" prefWidth="121.0" text="End Date" />
                </columns>
             </TableView>
             <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">

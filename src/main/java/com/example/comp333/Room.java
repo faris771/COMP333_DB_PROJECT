@@ -7,6 +7,8 @@ public class Room {
     private String roomType;
     private String roomStatus;
 
+    public static Room room;
+
     public Room(int roomNumber, double roomPrice, int roomNumberOfBeds, String roomType, String roomStatus) {
         this.roomNumber = roomNumber;
         this.roomPrice = roomPrice;
@@ -68,3 +70,4 @@ public class Room {
     }
 
 }
+
