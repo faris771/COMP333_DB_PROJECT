@@ -21,7 +21,7 @@ ALTER TABLE employee AUTO_INCREMENT = 1000;
 create table service(
   service_id int primary key AUTO_INCREMENT,
   service_type varchar(32),
-  service_cost real DEFAULT 0.00
+  service_price real DEFAULT 0.00
   -- serving_date_time DATETIME DEFAULT NOW() WILL BE MOVED TO SERVICE_TO_ROOM TABLE
 );
 
@@ -158,7 +158,7 @@ VALUES (1001, 0569157426);
 
 -- services GUESS SHOULD BE CHANGED
 
-INSERT INTO service (service_type, service_cost)
+INSERT INTO service (service_type, service_price)
 VALUES ('Cleaning', 0);
 
 
