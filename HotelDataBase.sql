@@ -18,11 +18,11 @@ create table employee (
 );
 ALTER TABLE employee AUTO_INCREMENT = 1000;
 
-create table services(
+create table service(
   service_id int primary key AUTO_INCREMENT,
   service_type varchar(32),
-  service_cost real DEFAULT 0.00,
-  serving_date_time DATETIME DEFAULT NOW()
+  service_cost real DEFAULT 0.00
+  -- serving_date_time DATETIME DEFAULT NOW() WILL BE MOVED TO SERVICE_TO_ROOM TABLE
 );
 
 create table Guest(
@@ -63,7 +63,7 @@ create table service_to_room( -- SAME AS 'PROVIDE'
   primary key (room_number, eid, service_id),
   foreign key (room_number) references room (room_number),
   foreign key (eid) references employee (eid),
-  foreign key (service_id) references services(service_id)
+  foreign key (service_id) references service(service_id)
 
 );
 
@@ -158,7 +158,7 @@ VALUES (1001, 0569157426);
 
 -- services GUESS SHOULD BE CHANGED
 
-INSERT INTO services (service_type, service_cost)
+INSERT INTO service (service_type, service_cost)
 VALUES ('Cleaning', 0);
 
 
