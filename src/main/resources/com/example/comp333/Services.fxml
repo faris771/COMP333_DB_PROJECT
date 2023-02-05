@@ -33,54 +33,43 @@
                         <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="60.40001220703125" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="44.39998779296876" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="55.600018310546886" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="70.0" minHeight="0.0" prefHeight="18.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="68.0" minHeight="1.7999755859374886" prefHeight="1.7999755859374886" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label prefHeight="22.0" prefWidth="103.0" text="Service_ID" textFill="WHITE">
+                        <Label prefHeight="22.0" prefWidth="103.0" text="Service ID" textFill="WHITE">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                        <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID (optional in adding)" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                             <font>
                                 <Font size="13.0" />
                             </font>
                         </TextField>
-                        <Label prefHeight="22.0" prefWidth="119.0" text="Service_Type" textFill="#f5f5f5" GridPane.rowIndex="1">
+                        <Label prefHeight="22.0" prefWidth="119.0" text="Service Type" textFill="#f5f5f5" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="Service_Type" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="serviceTypeField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="Service Type" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font size="13.0" />
                             </font>
                         </TextField>
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Service_Cost" textFill="WHITE" GridPane.rowIndex="2">
+                        <Label prefHeight="21.0" prefWidth="111.0" text="Service Price" textFill="WHITE" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Service_Cost" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </TextField>
-                        <Label prefHeight="21.0" prefWidth="111.0" text="Date_Time" textFill="WHITE" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="17.0" />
-                            </font>
-                        </Label>
-                        <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Date_Time" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="servicePriceField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Service Price" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font size="13.0" />
                             </font>
                         </TextField>
                     </children>
                 </GridPane>
-                <Button blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+                <Button fx:id="addButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -98,7 +87,7 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-                <Button blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+                <Button fx:id="updateButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -116,7 +105,7 @@
                         </RadialGradient>
                     </textFill>
                 </Button>
-                <Button blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+                <Button fx:id="deleteButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                     <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                             <stops>
@@ -136,12 +125,11 @@
                 </Button>
             </children>
         </Pane>
-        <TableView layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
+        <TableView fx:id="tableView" layoutX="313.0" prefHeight="456.0" prefWidth="448.0">
             <columns>
-                <TableColumn prefWidth="60.0" text="ID" />
-                <TableColumn prefWidth="162.39999389648438" text="Service_Type" />
-                <TableColumn prefWidth="82.39996337890625" text="Service_Cost" />
-                <TableColumn prefWidth="143.199951171875" text="Date_Time" />
+                <TableColumn fx:id="serviceIDCol" prefWidth="158.0" text="ID" />
+                <TableColumn fx:id="serviceTypeCol" prefWidth="142.0" text="Service_Type" />
+                <TableColumn fx:id="servicePriceCol" prefWidth="140.0" text="Service_Price" />
             </columns>
         </TableView>
         <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
