@@ -31,7 +31,7 @@ public class MenuController {
     }
     @FXML
     public  void  roomBtn (ActionEvent event ) {
-        HelloApplication.changeScene ( event, "RoomScene.fxml", "Room",760 , 600 );
+        HelloApplication.changeScene ( event, "Phone_empScene.fxml", "Room",760 , 600 );
     }
 
     @FXML
