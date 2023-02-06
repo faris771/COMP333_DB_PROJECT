@@ -61,13 +61,14 @@ create table service_to_room( -- SAME AS 'PROVIDE'
   eid int,
   service_id int,
   service_date DATE DEFAULT ( current_date()),
-  service_time TIME DEFAULT ( current_time()),
   primary key (room_number, eid, service_id),
   foreign key (room_number) references room (room_number),
   foreign key (eid) references employee (eid),
-  foreign key (service_id) references service(service_id)
+  foreign key (service_id) references service(service_id),
+  isPaid bool
 
 );
+
 
 
 
@@ -85,10 +86,11 @@ create table Booking(
 CREATE TABLE PAYMENT(
 
 Payment_id INT PRIMARY KEY AUTO_INCREMENT,
-Booking_id int,
 Payment_way varchar(32),
 Payment_Date DATE,
-foreign key (Booking_id) references Booking (Booking_id),
+Guest_SSN int not null, 
+amountPaid double,
+foreign key (Guest_SSN) references Guest (Guest_SSN)
 );
 -- DEFAULT INSERTIONS:
 

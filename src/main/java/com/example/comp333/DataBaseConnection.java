@@ -9,7 +9,7 @@ public class DataBaseConnection {
 
     public Connection getConnection() throws SQLException {
         try {
-            dataBaseLink = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" ); //THIS DIFFERS FROM USER TO ANOTHER CHANGE IT
+            dataBaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_comp333", "root", "password"); //THIS DIFFERS FROM USER TO ANOTHER CHANGE IT
         }catch (Exception e) {
             e.printStackTrace ();
         }
