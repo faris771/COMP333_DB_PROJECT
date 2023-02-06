@@ -26,18 +26,19 @@
                   <Font name="System Italic" size="34.0" />
                </font>
             </Label>
-            <GridPane layoutX="6.0" layoutY="64.0" prefHeight="304.0" prefWidth="303.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
+            <GridPane layoutX="6.0" layoutY="64.0" prefHeight="313.0" prefWidth="303.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="141.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.99999999999997" minWidth="10.0" prefWidth="156.99999999999997" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label prefHeight="21.0" prefWidth="68.0" text="SSN" textFill="WHITE">
@@ -80,12 +81,12 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <Label prefHeight="21.0" prefWidth="111.0" text="Email" textFill="WHITE" GridPane.rowIndex="4">
+                  <Label prefHeight="58.0" prefWidth="140.0" text="Email" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailField" blendMode="SRC_ATOP" prefHeight="54.0" prefWidth="141.0" promptText="email" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="emailField" blendMode="SRC_ATOP" prefHeight="42.0" prefWidth="150.0" promptText="email" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -95,14 +96,24 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nationalityField" blendMode="SRC_ATOP" prefHeight="41.0" prefWidth="141.0" promptText="nationality" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <TextField fx:id="nationalityField" blendMode="SRC_ATOP" prefHeight="30.0" prefWidth="150.0" promptText="nationality" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="34.0" prefWidth="142.0" text="Phone number" textFill="WHITE" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneNumberTextField" blendMode="SRC_ATOP" prefHeight="43.0" prefWidth="150.0" promptText="Phone number" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
                </children>
             </GridPane>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="436.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -120,7 +131,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
+            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="476.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -138,7 +149,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="524.0" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>

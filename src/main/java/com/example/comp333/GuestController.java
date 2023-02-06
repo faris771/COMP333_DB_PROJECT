@@ -5,17 +5,13 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.io.IOException;
+
 import java.net.URL;
-import java.nio.Buffer;
-import java.nio.channels.AcceptPendingException;
 import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -49,6 +45,9 @@ public class GuestController implements Initializable {
     TextField searchTextField;
 
     @FXML
+    TextField phoneNumberTextField;
+
+    @FXML
     TableColumn<Guest, Integer> SSNCol;
     @FXML
     TableColumn<Guest, String> firstNameCol;
@@ -72,14 +71,14 @@ public class GuestController implements Initializable {
 
     @FXML
     private void fillFieldsWithSearchRes (ActionEvent event) {
-        Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
 
             int SSN = Integer.parseInt ( SSN_field.getText () );
             // guest exists in the database
             if (checkIfGuestExists ( SSN )) {
-                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
+                DataBaseConnection connectDB = new DataBaseConnection ();
+                Connection connection = connectDB.getConnection ();
 
                 // get guest data
                 preparedStatement = connection.prepareStatement ( "SELECT * FROM guest G WHERE G.Guest_SSN = ?" );
@@ -110,23 +109,68 @@ public class GuestController implements Initializable {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
-            Guest.gst = new Guest ( Integer.parseInt ( SSN_field.getText () ), firstNameField.getText (),
-                    fatherNameField.getText (), familyNameField.getText (), emailField.getText (), nationalityField.getText ());
+
+            try {
+                Integer.parseInt ( SSN_field.getText () );
+            }catch (Exception e) {
+                HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
+                return;
+            }
+
+            try {
+                if (SSN_field.getText ().isEmpty () || firstNameField.getText ().isEmpty () || fatherNameField.getText ().isEmpty () || familyNameField.getText ().isEmpty () || emailField.getText ().isEmpty () || nationalityField.getText ().isEmpty () || phoneNumberTextField.getText ().isEmpty ()) {
+                    HelloApplication.AlertShow ( "Please fill all fields", "Empty fields", Alert.AlertType.ERROR );
+                    return;
+                }
+            } catch (Exception e) {
+                e.printStackTrace ();
+                e.getCause ();
+            }
+
+            int SSN = Integer.parseInt ( SSN_field.getText () );
+
+
+
+            try {
+                if (phoneNumberTextField.getText ().length () != 10) {
+                    HelloApplication.AlertShow ( "Please enter a valid phone number, 10 digits are allowed", "Invalid phone number", Alert.AlertType.ERROR );
+                    return;
+                }
+                Integer.parseInt ( phoneNumberTextField.getText () );
+            } catch (NumberFormatException e) {
+                HelloApplication.AlertShow ( "Please enter a valid phone number, only digits (10 digits) are allowed", "Invalid phone number", Alert.AlertType.ERROR );
+                return;
+            }
+
+            String firstName = firstNameField.getText ();
+            String fatherName = fatherNameField.getText ();
+            String familyName = familyNameField.getText ();
+            String email = emailField.getText ();
+            String nationality = nationalityField.getText ();
+            String phoneNumber = phoneNumberTextField.getText ();
+
+            try {
+                Guest.gst = new Guest ( SSN, firstName, fatherName, familyName, email, nationality, phoneNumber );
+            } catch (Exception e) {
+                e.printStackTrace ();
+                e.getCause ();
+            }
 
             // guest doesn't exist, we can add.
-            if (! checkIfGuestExists ( Guest.gst.getGuestSSN () )) {
+            if (! checkIfGuestExists ( SSN )) {
 
-                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
-                preparedStatement = connection.prepareStatement ( "insert into guest values (?,?,?,?,?,?)");
+                DataBaseConnection connectionDB = new DataBaseConnection ();
+                connection = connectionDB.getConnection ();
+                preparedStatement = connection.prepareStatement ( "insert into guest values (?,?,?,?,?,?,?)");
 
-                preparedStatement.setString ( 1, Guest.gst.getGuestSSN () + "" );
-                preparedStatement.setString(2, Guest.gst.getGuestFirstName ());
-                preparedStatement.setString(3, Guest.gst.getGuestFatherName ());
-                preparedStatement.setString(4, Guest.gst.getGuestFamilyName ());
-                preparedStatement.setString(5, Guest.gst.getGuestEmail ());
-                preparedStatement.setString ( 6, Guest.gst.getGuestNationality () );
+                preparedStatement.setInt( 1,  SSN);
+                preparedStatement.setString(2,firstName);
+                preparedStatement.setString(3, fatherName);
+                preparedStatement.setString(4, familyName);
+                preparedStatement.setString(5, email);
+                preparedStatement.setString ( 6, nationality );
+                preparedStatement.setString ( 7, phoneNumber );
                 preparedStatement.execute ();
-                tableView.refresh();
             }
             // guest exists already.
             else {
@@ -135,7 +179,7 @@ public class GuestController implements Initializable {
             }
 
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
-                    fatherNameField,nationalityField, emailField  );
+                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
 
         } catch (SQLException ex) {
             ex.printStackTrace ();
@@ -150,7 +194,6 @@ public class GuestController implements Initializable {
         String bookingDeleteQuery = "DELETE FROM booking WHERE Booking_id = " + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
         try {
             Connection connectDB = connection.getConnection ();
-            Statement statement = connectDB.createStatement ();
 
             PreparedStatement ps = connectDB.prepareStatement ( bookingDeleteQuery);
 
@@ -163,7 +206,9 @@ public class GuestController implements Initializable {
             // if the user confirms the deletion
             if ( result.isPresent () && result.get() == ButtonType.OK) {
                 ps.execute ();
-                tableView.refresh();
+                HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                        fatherNameField,nationalityField, emailField , phoneNumberTextField);
+
             }
 
 
@@ -185,18 +230,55 @@ public class GuestController implements Initializable {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
+                DataBaseConnection connectionDB = new DataBaseConnection ();
 
-            connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
+                connection = connectionDB.getConnection ();
                 preparedStatement = connection.prepareStatement ( "UPDATE guest G SET G.Guest_first_Name = ?," +
                         " G.Guest_father_Name = ?, G.Guest_family_Name = ?, " +
                         "G.Guest_email = ?, G.Guest_nationality = ? where Guest_SSn = ? ");
 
-                preparedStatement.setString ( 1, firstNameField.getText ());
-                preparedStatement.setString ( 2, fatherNameField.getText ());
-                preparedStatement.setString ( 3, familyNameField.getText ());
-                preparedStatement.setString ( 4, emailField.getText ());
-                preparedStatement.setString ( 5, nationalityField.getText ());
-                preparedStatement.setInt ( 6, Integer.parseInt ( SSN_field.getText () ));
+                try {
+                    Integer.parseInt ( SSN_field.getText () );
+                } catch (Exception e) {
+                    HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
+                    HelloApplication.clearTextFields ( SSN_field );
+                    return;
+                }
+
+
+                int SSN = Integer.parseInt ( SSN_field.getText () );
+                String firstName = firstNameField.getText ();
+                String fatherName = fatherNameField.getText ();
+                String familyName = familyNameField.getText ();
+                String email = emailField.getText ();
+                String nationality = nationalityField.getText ();
+                String phoneNumber = phoneNumberTextField.getText ();
+
+                try {
+                    if (phoneNumber.length () != 10) {
+                        HelloApplication.AlertShow ( "Please enter a valid phone number", "Invalid phone number", Alert.AlertType.ERROR );
+                        HelloApplication.clearTextFields ( phoneNumberTextField );
+                        return;
+                    }
+
+                    if (email.length () < 5 || !email.contains ( "@" ) || !email.contains ( "." ) ) {
+                        HelloApplication.AlertShow ( "Please enter a valid email", "Invalid email", Alert.AlertType.ERROR );
+                        HelloApplication.clearTextFields ( emailField );
+                        return;
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace ();
+                    e.getCause ();
+                }
+
+
+                preparedStatement.setString ( 1, firstName);
+                preparedStatement.setString ( 2, fatherName);
+                preparedStatement.setString ( 3, familyName);
+                preparedStatement.setString ( 4,email);
+                preparedStatement.setString ( 5, nationality);
+                preparedStatement.setInt ( 6, SSN);
 
                 Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
                 alert.setContentText ( "Are you sure you want to update the guest data?" );
@@ -207,7 +289,8 @@ public class GuestController implements Initializable {
                 if ( result.isPresent () && result.get() == ButtonType.OK) {
                     preparedStatement.execute ();
                     tableView.refresh();
-
+                    HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                            fatherNameField,nationalityField, emailField , phoneNumberTextField);
                 }
 
         } catch (SQLException e) {
@@ -226,7 +309,8 @@ public class GuestController implements Initializable {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
+            DataBaseConnection connectNow = new DataBaseConnection ();
+            connection = connectNow.getConnection ();
             preparedStatement = connection.prepareStatement ( "SELECT G.Guest_SSN from guest G WHERE G.Guest_SSN = ?" );
             preparedStatement.setString ( 1, SSN + "" );
             ResultSet rs = preparedStatement.executeQuery ();
@@ -263,8 +347,9 @@ public class GuestController implements Initializable {
                 String lname = queryRes.getString ( "Guest_family_Name" );
                 String email = queryRes.getString ( "Guest_email" );
                 String nationality = queryRes.getString ( "Guest_nationality" );
+                String phoneNumber = queryRes.getString ( "phone_num" );
 
-                guestObservableList.add ( new Guest ( SSN, fname, mname, lname, email, nationality ));
+                guestObservableList.add ( new Guest ( SSN, fname, mname, lname, email, nationality, phoneNumber ));
             }
             SSNCol.setCellValueFactory ( new PropertyValueFactory<> ("guestSSN"));
             firstNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFirstName"));

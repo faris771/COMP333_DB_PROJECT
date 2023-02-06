@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
      // this method to enter the guest scene
     public  void  GuestButton(ActionEvent event ){
-        HelloApplication.changeScene ( event, "Guset.fxml", "Guest" , 760 , 600);
+        HelloApplication.changeScene ( event, "Guest.fxml", "Guest" , 760 , 600);
     }
     @FXML
     public  void  serviceButton (ActionEvent event ) {

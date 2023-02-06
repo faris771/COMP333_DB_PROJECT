@@ -2,6 +2,7 @@ package com.example.comp333;
 
 public class Guest {
     private int guestSSN;
+    private String guestPhoneNumber;
     private String guestFirstName;
     private String guestFatherName;
     private String guestFamilyName;
@@ -10,7 +11,7 @@ public class Guest {
 
     static Guest gst;
 
-    public Guest(int guestSSN, String guestFirstName, String guestFatherName, String guestFamilyName, String guestEmail, String guestNationality) {
+    public Guest(int guestSSN, String guestFirstName, String guestFatherName, String guestFamilyName, String guestEmail, String guestNationality, String guestPhoneNumber) {
 
         this.guestSSN = guestSSN;
         this.guestFirstName = guestFirstName;
@@ -18,10 +19,31 @@ public class Guest {
         this.guestFamilyName = guestFamilyName;
         this.guestEmail = guestEmail;
         this.guestNationality = guestNationality;
+        setGuestPhoneNumber ( guestPhoneNumber );
     }
 
     public int getGuestSSN() {
         return guestSSN;
+    }
+
+    public String getGuestPhoneNumber() {
+        return guestPhoneNumber;
+    }
+
+    public void setGuestPhoneNumber(String guestPhoneNumber) {
+        try  {
+            if (guestPhoneNumber.length() != 10) {
+                throw new Exception("Phone number must be 10 digits");
+            }
+            if (guestPhoneNumber.charAt(0) != '0') {
+                throw new Exception("Phone number must start with 0");
+            }
+            Integer.parseInt ( guestPhoneNumber );
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Phone number must be 10 digits and start with 0, and consist of numbers only");
+        }
+        this.guestPhoneNumber = guestPhoneNumber;
     }
 
     public void setGuestSSN(int guestSSN) {
