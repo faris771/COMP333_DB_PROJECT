@@ -53,7 +53,7 @@ public class ServiceToRoom {
         this.serviceDate = serviceDate;
     }
 
-    public boolean isServiceIsPaid() {
+    public boolean getServiceIsPaid() {
         return serviceIsPaid;
     }
 

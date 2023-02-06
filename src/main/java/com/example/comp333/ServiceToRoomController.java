@@ -2,6 +2,8 @@ package com.example.comp333;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,6 +45,8 @@ public class ServiceToRoomController implements Initializable {
     private TableColumn<ServiceToRoom, String> serviceIsPaidColumn;
 
 
+    @FXML
+    private TextField searchTextField;
     private ObservableList<ServiceToRoom> serviceToRoomObservableList = FXCollections.observableArrayList();
 
 
@@ -82,6 +86,30 @@ public class ServiceToRoomController implements Initializable {
 //            serveTimeColumn.setCellValueFactory(new PropertyValueFactory<>("timeString")); // DEFAULT DATE ADDED TO TABLE VIEW
 
             serviceToRoomTable.setItems(serviceToRoomObservableList);
+            FilteredList<ServiceToRoom> filteredData = new FilteredList<>(serviceToRoomObservableList, b -> true);
+            searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(serviceToRoom -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (String.valueOf(serviceToRoom.getServiceID()).contains(newValue)) {
+                        return true;
+                    } else if (String.valueOf(serviceToRoom.getRoomNumber()).contains(newValue)) {
+                        return true;
+                    } else if (String.valueOf(serviceToRoom.getEmployeeID()).contains(newValue)) {
+                        return true;
+                    } else if (String.valueOf(serviceToRoom.getServiceDate()).contains(newValue)) {
+                        return true;
+                    } else if (String.valueOf(serviceToRoom.getServiceIsPaid()).contains(newValue)) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<ServiceToRoom> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(serviceToRoomTable.comparatorProperty());
+            serviceToRoomTable.setItems(sortedData);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

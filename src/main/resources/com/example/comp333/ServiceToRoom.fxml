@@ -103,9 +103,15 @@
                   </RadialGradient>
                </textFill>
             </Button>
+            <TextField fx:id="searchTextField" layoutX="13.0" layoutY="556.0" prefHeight="25.0" prefWidth="258.0" promptText="type key words.." />
+            <Label alignment="CENTER" layoutX="41.0" layoutY="522.0" prefHeight="17.0" prefWidth="211.0" text="Search Service" textFill="#dad4d4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane layoutX="267.0" layoutY="463.0" prefHeight="153.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
+      <Pane layoutX="289.0" layoutY="463.0" prefHeight="153.0" prefWidth="433.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
          <children>
             <Label layoutX="14.0" layoutY="22.0" prefHeight="25.0" prefWidth="358.0" text="Stay with us and experience comfort, luxury," textFill="WHITE">
                <font>
@@ -137,7 +143,7 @@
             </Button>
          </children>
       </Pane>
-      <TableView fx:id="serviceToRoomTable" layoutX="290.0" layoutY="-3.0" prefHeight="468.0" prefWidth="433.0">
+      <TableView fx:id="serviceToRoomTable" layoutX="290.0" prefHeight="468.0" prefWidth="433.0">
         <columns>
           <TableColumn fx:id="serviceIDColumn" prefWidth="75.0" text="Service ID" />
           <TableColumn fx:id="roomNumberColumn" prefWidth="115.0" text="Room Number" />
