@@ -103,6 +103,7 @@ public class PaymentController implements Initializable {
         }
     }
 
+    @FXML
     private void payBtnOnAction (ActionEvent event) {
 
 

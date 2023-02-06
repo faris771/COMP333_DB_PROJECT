@@ -111,7 +111,7 @@
          <columns>
             <TableColumn fx:id="paymentIDCol" prefWidth="91.99993896484375" text="Payment ID" />
             <TableColumn fx:id="SSNCol" prefWidth="32.800048828125" text="SSN" />
-            <TableColumn fx:id="paymentWayCol" maxWidth="1000.0" prefWidth="94.39999389648438" text="Payment Way" />
+            <TableColumn fx:id="paymentTypeCol" maxWidth="1000.0" prefWidth="94.39999389648438" text="Payment Way" />
             <TableColumn fx:id="paymentDateCol" maxWidth="1000.0" minWidth="0.0" prefWidth="113.5999755859375" text="Payment Date" />
             <TableColumn fx:id="amountPaidCol" maxWidth="1000.0" prefWidth="112.800048828125" text="Amount paid" />
          </columns>
