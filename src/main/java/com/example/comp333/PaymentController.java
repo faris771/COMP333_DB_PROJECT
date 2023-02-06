@@ -87,7 +87,7 @@ public class PaymentController implements Initializable {
             ResultSet queryResult = statement.executeQuery ( paymentsShowQuery );
 
             while (queryResult.next ()) {
-                paymentObservableList.add ( new Payment ( queryResult.getInt ( "Guest_SSN" ), queryResult.getString ( "Payment_Type" ), queryResult.getString ( "Payment_Date" ), queryResult.getDouble ( "amountPaid" ), queryResult.getString ( "payment_id" ) ) );
+                paymentObservableList.add ( new Payment ( queryResult.getInt ( "Guest_SSN" ), queryResult.getString ( "Payment_way" ), queryResult.getString ( "Payment_Date" ), queryResult.getDouble ( "amountPaid" ), queryResult.getInt ( "payment_id" ) ) );
             }
 
             SSNCol.setCellValueFactory ( new PropertyValueFactory<> ( "SSN" ) );
@@ -141,7 +141,7 @@ public class PaymentController implements Initializable {
             ResultSet bookingsResultSet = statement.executeQuery ( amountPaidQuery );
 
             while (bookingsResultSet.next ()) {
-                amountPaid = bookingsResultSet.getDouble ( "amountPaid" );
+                amountPaid = bookingsResultSet.getDouble ( "room_price" );
             }
 
             if (amountPaid > 0) {
@@ -152,7 +152,7 @@ public class PaymentController implements Initializable {
             }
 
 
-            String amountPaidOnServicesQuery = "SELECT S.service_price FROM service S, service_to_room STR, booking B WHERE B.Guest_SSN = " + ssnTextField.getText () + " AND B.room_number = STR.room_number AND STR.service_id = S.service_id";
+            String amountPaidOnServicesQuery = "SELECT S.service_price FROM service S, service_to_room STR, booking B WHERE B.Guest_SSN = " + SSN + " AND B.room_number = STR.room_number AND STR.service_id = S.service_id";
 
             ResultSet servicesResultSet = statement.executeQuery ( amountPaidOnServicesQuery );
 
@@ -177,7 +177,7 @@ public class PaymentController implements Initializable {
             e.printStackTrace ();
         }
 
-        String paymentInsertQuery = "INSERT INTO Payment (Guest_SSN, Payment_way, Payment_Date, amountPaid) VALUES ('" + ssnTextField.getText () + "', '" + paymentType + "', '" + java.time.LocalDate.now () + "', '" + amountPaid + "'" + ")";
+        String paymentInsertQuery = "INSERT INTO Payment (Guest_SSN, Payment_way, Payment_Date, amountPaid) VALUES ('" + SSN + "', '" + paymentType + "', '" + java.time.LocalDate.now () + "', '" + amountPaid + "'" + ")";
 
         try {
             Connection connectDB = connection.getConnection ();

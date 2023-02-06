@@ -2,12 +2,12 @@ package com.example.comp333;
 
 public class Payment {
     int SSN;
-    String paymentID;
+    int paymentID;
     String paymentType; // card or cash
     String paymentDate;
     double amountPaid;
 
-public Payment(int SSN, String paymentType, String paymentDate, double amountPaid, String paymentID) {
+public Payment(int SSN, String paymentType, String paymentDate, double amountPaid, int paymentID) {
         this.SSN = SSN;
         this.paymentType = paymentType;
         this.paymentDate = paymentDate;
