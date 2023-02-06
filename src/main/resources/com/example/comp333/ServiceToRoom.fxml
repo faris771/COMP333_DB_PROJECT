@@ -85,25 +85,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="updateButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="442.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Button fx:id="deleteButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+            <Button fx:id="deleteButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="448.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
