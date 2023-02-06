@@ -1,9 +1,7 @@
 package com.example.comp333;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -14,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import static com.example.comp333.HelloApplication.isTextFieldEmpty;
 
 public class BookingController implements Initializable {
 
@@ -49,6 +49,9 @@ public class BookingController implements Initializable {
     TableColumn<Booking, Integer> SSNCol;
     @FXML
     TableColumn<Booking, Integer> IDCol;
+
+    @FXML
+    TableColumn<Booking, String> roomNumCol;
 
     @FXML
     TableColumn<Booking, String> startDateCol;
@@ -91,7 +94,7 @@ public class BookingController implements Initializable {
         // Set cell value factory to tableview.
         SSNCol.setCellValueFactory ( new PropertyValueFactory<> ( "SSN" ) );
         IDCol.setCellValueFactory ( new PropertyValueFactory<> ( "ID" ) );
-
+        roomNumCol.setCellValueFactory ( new PropertyValueFactory<> ( "roomNumber" ) );
         startDateCol.setCellValueFactory ( new PropertyValueFactory<> ( "startDate" ) );
         endDateCol.setCellValueFactory ( new PropertyValueFactory<> ( "endDate" ) );
 
@@ -115,7 +118,7 @@ public class BookingController implements Initializable {
             roomStatement.executeQuery ( "SELECT * FROM room WHERE Room_Number = " + roomNumberTextField.getText () );
 
             // Check if start date is before end date and if guest and room exists
-            if (guestStatement.getResultSet ().next () && roomStatement.getResultSet ().next () && startDatePicker.getValue ().isBefore ( endDatePicker.getValue () )) {
+            if (guestStatement.getResultSet ().next () && roomStatement.getResultSet ().next ()  && startDatePicker.getValue ().isBefore ( endDatePicker.getValue () ) ) {
 
                 // Check if room is free to book it, or say that it is not free
                 bookIfNotBooked ( bookingAddQuery, connectDB, statement, roomStatement );
@@ -139,8 +142,15 @@ public class BookingController implements Initializable {
 
         statement.executeUpdate ( bookingAddQuery );
         bookingTableView.refresh();
+
+        // update old room status to free
+        Statement oldRoomSt = connectDB.createStatement ();
+        oldRoomSt.execute ("UPDATE room set room.room_status = 'FREE' WHERE room_number = '" + bookingTableView.getSelectionModel ().getSelectedItem ().getRoomNumber () + "'");
+
+        // Update room status to reserved
         Statement roomSt = connectDB.createStatement ();
-        roomSt.executeQuery ("UPDATE room set room.room_status = 'RESERVED' WHERE room_number = '" + roomNumberTextField.getText () + "'");
+        roomSt.execute ("UPDATE room set room.room_status = 'RESERVED' WHERE room_number = '" + roomNumberTextField.getText () + "'");
+        roomSt.close ();
 
     }
 
@@ -159,8 +169,12 @@ public class BookingController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if ( result.isPresent () && result.get() == ButtonType.OK) {
+
+                // Update room status to free
+                Statement roomSt = connectDB.createStatement ();
+                roomSt.execute ("UPDATE room set room.room_status = 'FREE' WHERE room_number = '" + bookingTableView.getSelectionModel ().getSelectedItem ().getRoomNumber () + "'");
+                roomSt.close ();
                 statement.executeUpdate ( bookingDeleteQuery );
-                bookingTableView.refresh();
 
             }
 
@@ -174,23 +188,51 @@ public class BookingController implements Initializable {
     @FXML
     private void updateBooking(ActionEvent event) {
         DataBaseConnection connection = new DataBaseConnection ();
-        String bookingUpdateQuery = "UPDATE booking SET guest_ssn = '" + SSNTextField.getText () + "', room_number = '" + roomNumberTextField.getText () + "', starting_date = '" + startDatePicker.getValue () + "', end_date = '" + endDatePicker.getValue () + "' WHERE Booking_id = " + bookingTableView.getSelectionModel ().getSelectedItem ().getID ();
+
+        if (bookingTableView.getSelectionModel ().getSelectedItem () == null) {
+            HelloApplication.AlertShow ( "Please select a booking to update", "Error, something went wrong.." , Alert.AlertType.ERROR);
+            return;
+        }
+
+        try {
+            if (SSNTextField.getText () != null && !SSNTextField.getText ().isEmpty () && !SSNTextField.getText ().isBlank ()) {
+                Integer.parseInt ( SSNTextField.getText () );
+            }
+        } catch (Exception e) {
+            HelloApplication.AlertShow ( "Please enter a valid SSN or leave it empty for no update ", "Error, something went wrong.." , Alert.AlertType.ERROR);
+            return;
+        }
+
+        int SSN = isTextFieldEmpty(SSNTextField) ? bookingTableView.getSelectionModel ().getSelectedItem ().getSSN () : Integer.parseInt ( SSNTextField.getText () );
+        int roomNumber = isTextFieldEmpty(roomNumberTextField) ? Integer.parseInt ( bookingTableView.getSelectionModel ().getSelectedItem ().getRoomNumber () ) : Integer.parseInt ( roomNumberTextField.getText () );
+        LocalDate startDate = (startDatePicker.getValue () == null) ? LocalDate.parse ( bookingTableView.getSelectionModel ().getSelectedItem ().getStartDate () ) : startDatePicker.getValue ();
+        LocalDate endDate = endDatePicker.getValue () == null ? LocalDate.parse ( bookingTableView.getSelectionModel ().getSelectedItem ().getEndDate () ) : endDatePicker.getValue ();
+
+        String bookingUpdateQuery = "UPDATE booking SET guest_ssn = '" + SSN + "', room_number = '" + roomNumber + "', starting_date = '" + startDate  + "', end_date = '" + endDate + "' WHERE Booking_id = " + bookingTableView.getSelectionModel ().getSelectedItem ().getID ();
         try {
             Connection connectDB = connection.getConnection ();
             Statement statement = connectDB.createStatement ();
 
             Statement ssnVerifyStatement = connectDB.createStatement ();
-            ssnVerifyStatement.executeQuery ( "SELECT * FROM booking WHERE Booking_id = " + SSNTextField.getText () );
+            ssnVerifyStatement.executeQuery ( "SELECT * FROM guest WHERE Guest_SSN = '" + SSN +"'" );
 
             Statement roomVerifyStatement = connectDB.createStatement ();
-            roomVerifyStatement.executeQuery ( "SELECT * FROM booking WHERE Booking_id = " + roomNumberTextField.getText () );
+            roomVerifyStatement.executeQuery ( "SELECT * FROM room WHERE room_number = " + roomNumber );
+
 
             // check if guest and room exists and if start date is before end date
-            if (ssnVerifyStatement.getResultSet ().next () && roomVerifyStatement.getResultSet ().next () && startDatePicker.getValue ().isBefore ( endDatePicker.getValue () ) ) {
+            if (ssnVerifyStatement.getResultSet ().next () && roomVerifyStatement.getResultSet ().next () && startDate.isBefore ( endDate ) ) {
                 bookIfNotBooked ( bookingUpdateQuery, connectDB, statement, roomVerifyStatement ); // check if room is free to book it, or say that it is not free
 
-            } else { // if guest or room does not exist or start date is after end date
-                System.out.println ( "Guest or room does not exist" );
+
+            }
+
+            else if (!ssnVerifyStatement.getResultSet ().next ()) {
+                System.out.println ( "Guest does not exist" );
+                System.out.println ();
+                HelloApplication.AlertShow ( "Guest does not exist!!", "Error, something went wrong.." , Alert.AlertType.ERROR);
+            } else if (!roomVerifyStatement.getResultSet ().next ()){ // if guest or room does not exist or start date is after end date
+                System.out.println ( "Room does not exist" );
                 HelloApplication.AlertShow ( "Guest or room does not exist!!", "Error, something went wrong.." , Alert.AlertType.ERROR);
             }
         } catch (Exception e) {
@@ -198,6 +240,7 @@ public class BookingController implements Initializable {
             e.getCause ();
         }
     }
+
 
 }
 

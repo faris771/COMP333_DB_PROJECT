@@ -20,7 +20,7 @@
 
 <AnchorPane prefHeight="573.0" prefWidth="773.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.BookingController">
    <children>
-      <AnchorPane layoutX="5.0" prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;">
+      <AnchorPane layoutX="5.0" layoutY="-6.0" prefHeight="604.0" prefWidth="842.0" style="-fx-background-color: #2F4F4F;">
          <children>
             <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="596.0" prefWidth="300.0" style="-fx-background-color: #2F4F4F;">
                <children>
@@ -29,7 +29,7 @@
                         <Font name="System Italic" size="34.0" />
                      </font>
                   </Label>
-                  <GridPane layoutX="2.0" layoutY="101.0" prefHeight="262.0" prefWidth="293.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
+                  <GridPane layoutX="2.0" layoutY="100.0" prefHeight="265.0" prefWidth="293.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="141.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="148.0" />
@@ -56,7 +56,7 @@
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="roomNumberTextField" blendMode="SRC_ATOP" prefHeight="28.0" prefWidth="148.0" promptText="Room Number" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="roomNumberTextField" blendMode="SRC_ATOP" prefHeight="34.0" prefWidth="135.0" promptText="Room Number" style="-fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -66,13 +66,13 @@
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="startDatePicker" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="startDatePicker" prefHeight="37.0" prefWidth="147.0" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label layoutX="12.0" layoutY="140.0" prefHeight="26.0" prefWidth="141.0" text="End Date" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="endDatePicker" layoutX="153.0" layoutY="178.0" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="endDatePicker" layoutX="153.0" layoutY="178.0" prefHeight="35.0" prefWidth="147.0" promptText="Enter Date" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addBooking" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
@@ -131,22 +131,23 @@
                   </Button>
                </children>
             </Pane>
-            <TableView fx:id="bookingTableView" layoutX="306.0" prefHeight="456.0" prefWidth="455.0">
+            <TableView fx:id="bookingTableView" layoutX="310.0" layoutY="6.0" prefHeight="470.0" prefWidth="642.0">
                <columns>
-                  <TableColumn fx:id="IDCol" prefWidth="108.0" text="Booking ID" />
-                  <TableColumn fx:id="SSNCol" prefWidth="110.0" text="Guest SSN" />
-                  <TableColumn fx:id="startDateCol" prefWidth="115.0" text="Start Date" />
-                  <TableColumn fx:id="endDateCol" prefWidth="121.0" text="End Date" />
+                  <TableColumn fx:id="IDCol" prefWidth="83.199951171875" text="Booking ID" />
+                  <TableColumn fx:id="roomNumCol" prefWidth="97.5999755859375" text="Room number" />
+                  <TableColumn fx:id="SSNCol" prefWidth="83.99993896484375" text="Guest SSN" />
+                  <TableColumn fx:id="startDateCol" minWidth="7.2000732421875" prefWidth="146.40008544921875" text="Start Date" />
+                  <TableColumn fx:id="endDateCol" minWidth="0.0" prefWidth="231.19998779296873" text="End Date" />
                </columns>
             </TableView>
-            <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
+            <Pane layoutX="308.0" layoutY="477.0" prefHeight="126.0" prefWidth="731.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="347.0" text="Booking a room in a hotel ensures a" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#exitBtn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+                  <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="196.0" layoutY="81.0" mnemonicParsing="false" onAction="#exitBtn" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                      <textFill>
                         <RadialGradient centerX="0.5" radius="0.5">
                            <stops>
@@ -164,7 +165,7 @@
                         </RadialGradient>
                      </textFill>
                   </Button>
-                  <ImageView fitHeight="108.0" fitWidth="110.0" layoutX="313.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="108.0" fitWidth="110.0" layoutX="313.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/book.png" />
                      </image>
@@ -174,7 +175,7 @@
                         <Font name="System Italic" size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="72.0" prefHeight="26.0" prefWidth="347.0" text="stay for travelers.&quot;" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="70.0" prefHeight="22.0" prefWidth="347.0" text="stay for travelers.&quot;" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="17.0" />
                      </font>

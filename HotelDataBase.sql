@@ -39,7 +39,7 @@ create table Guest(
 
 CREATE TABLE  employee_phone(
 
-	phone_num VARCHAR(32) ,
+phone_num VARCHAR(32) ,
   eid INT,
   PRIMARY KEY(phone_num,eid),
   FOREIGN KEY(eid) REFERENCES EMPLOYEE(eid)
@@ -60,7 +60,8 @@ create table service_to_room( -- SAME AS 'PROVIDE'
   room_number int,
   eid int,
   service_id int,
-  service_date_time DATETIME DEFAULT (now()),
+  service_date DATE DEFAULT ( current_date()),
+  service_time TIME DEFAULT ( current_time()),
   primary key (room_number, eid, service_id),
   foreign key (room_number) references room (room_number),
   foreign key (eid) references employee (eid),
@@ -83,14 +84,11 @@ create table Booking(
 
 CREATE TABLE PAYMENT(
 
-	Payment_id INT PRIMARY KEY AUTO_INCREMENT,
-  guest_ssn int,
-  Booking_id int,
-  Payment_way varchar(32),
-  Payment_Day varchar (32),
-  foreign key (Booking_id) references Booking (Booking_id),
-  foreign key (guest_ssn) references Booking (guest_ssn)
-
+Payment_id INT PRIMARY KEY AUTO_INCREMENT,
+Booking_id int,
+Payment_way varchar(32),
+Payment_Date DATE,
+foreign key (Booking_id) references Booking (Booking_id),
 );
 -- DEFAULT INSERTIONS:
 
@@ -151,16 +149,20 @@ VALUES (304, 170.9, 1, 'single', 'FREE');
 
 -- PHONES
 INSERT INTO employee_phone (eid, phone_num)
-VALUES (1001, 0595110186);
+VALUES (1001, '0595110186');
 
 INSERT INTO employee_phone (eid, phone_num)
-VALUES (1001, 0569157426);
+VALUES (1001, '0569157426');
 
 
 -- services GUESS SHOULD BE CHANGED
 
 INSERT INTO service (service_type, service_price)
 VALUES ('Cleaning', 0);
+
+-- INSERTIONS TO SERVICE TO ROOM TABLE
+INSERT INTO service_to_room (room_number, eid, service_id)
+VALUES (101, 1000, 1);
 
 
 -- 
