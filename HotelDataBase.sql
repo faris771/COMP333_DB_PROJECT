@@ -88,6 +88,7 @@ Payment_id INT PRIMARY KEY AUTO_INCREMENT,
 Payment_way varchar(32),
 Payment_Date DATE,
 Guest_SSN int not null, 
+amountPaid double,
 foreign key (Guest_SSN) references Guest (Guest_SSN)
 );
 -- DEFAULT INSERTIONS:
