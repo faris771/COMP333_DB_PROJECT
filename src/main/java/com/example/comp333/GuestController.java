@@ -190,12 +190,12 @@ public class GuestController implements Initializable {
     // update guest data
     private void deleteBtnOnAction (ActionEvent event) {
 
-        DataBaseConnection connection = new DataBaseConnection ();
+        DataBaseConnection connectDB = new DataBaseConnection ();
         String bookingDeleteQuery = "DELETE FROM booking WHERE Booking_id = " + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
         try {
-            Connection connectDB = connection.getConnection ();
+            Connection connection = connectDB.getConnection ();
 
-            PreparedStatement ps = connectDB.prepareStatement ( bookingDeleteQuery);
+            PreparedStatement ps = connection.prepareStatement ( bookingDeleteQuery);
 
             Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
             alert.setContentText ( "Are you sure you want to delete the guest?" );
@@ -216,10 +216,6 @@ public class GuestController implements Initializable {
             e.printStackTrace ();
             e.getCause ();
         }
-
-
-
-
     }
 
 
@@ -229,30 +225,41 @@ public class GuestController implements Initializable {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+
+        if (tableView.getSelectionModel ().getSelectedItem () == null) {
+            HelloApplication.AlertShow ( "Please select a guest to update", "No guest selected", Alert.AlertType.ERROR );
+            return;
+        }
+
         try {
                 DataBaseConnection connectionDB = new DataBaseConnection ();
 
-                connection = connectionDB.getConnection ();
+            try {
+                if (! HelloApplication.isTextFieldEmpty (SSN_field) ) {
+                    Integer.parseInt ( SSN_field.getText () );
+                }
+            } catch (Exception e) {
+                HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
+                HelloApplication.clearTextFields ( SSN_field );
+                return;
+            }
+
+
+                int SSN = HelloApplication.isTextFieldEmpty ( SSN_field ) ? tableView.getSelectionModel ().getSelectedItem ().getGuestSSN () : Integer.parseInt ( SSN_field.getText () );
+                String firstName = HelloApplication.isTextFieldEmpty(firstNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFirstName () : firstNameField.getText ();
+                String fatherName = HelloApplication.isTextFieldEmpty(fatherNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFatherName () : fatherNameField.getText ();
+                String familyName = HelloApplication.isTextFieldEmpty(familyNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFamilyName () : familyNameField.getText ();
+                String email = HelloApplication.isTextFieldEmpty(emailField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestEmail () : emailField.getText ();
+                String nationality = HelloApplication.isTextFieldEmpty(nationalityField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestNationality () : nationalityField.getText ();
+                String phoneNumber = HelloApplication.isTextFieldEmpty(phoneNumberTextField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestPhoneNumber () : phoneNumberTextField.getText ();
+
+
+            connection = connectionDB.getConnection ();
                 preparedStatement = connection.prepareStatement ( "UPDATE guest G SET G.Guest_first_Name = ?," +
                         " G.Guest_father_Name = ?, G.Guest_family_Name = ?, " +
                         "G.Guest_email = ?, G.Guest_nationality = ? where Guest_SSn = ? ");
 
-                try {
-                    Integer.parseInt ( SSN_field.getText () );
-                } catch (Exception e) {
-                    HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
-                    HelloApplication.clearTextFields ( SSN_field );
-                    return;
-                }
 
-
-                int SSN = Integer.parseInt ( SSN_field.getText () );
-                String firstName = firstNameField.getText ();
-                String fatherName = fatherNameField.getText ();
-                String familyName = familyNameField.getText ();
-                String email = emailField.getText ();
-                String nationality = nationalityField.getText ();
-                String phoneNumber = phoneNumberTextField.getText ();
 
                 try {
                     if (phoneNumber.length () != 10) {
@@ -271,7 +278,6 @@ public class GuestController implements Initializable {
                     e.printStackTrace ();
                     e.getCause ();
                 }
-
 
                 preparedStatement.setString ( 1, firstName);
                 preparedStatement.setString ( 2, fatherName);

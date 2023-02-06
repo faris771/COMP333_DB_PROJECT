@@ -87,5 +87,13 @@ public class HelloApplication extends Application {
             f.clear ();
         }
     }
+    public static boolean isTextFieldEmpty(TextField... fields) {
+        for (TextField f : fields) {
+            if (f == null || f.getText ().isEmpty () || f.getText ().isBlank ()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
