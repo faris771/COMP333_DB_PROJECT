@@ -11,13 +11,15 @@ public class ServiceToRoom {
     private int employeeID;
     private String serviceDate;
 
-    public ServiceToRoom(int serviceID, int roomNumber, int employeeID, String serviceDate) {
+    private boolean serviceIsPaid;
+
+    public ServiceToRoom(int serviceID, int roomNumber, int employeeID, String serviceDate, boolean serviceIsPaid) {
         this.serviceID = serviceID;
         this.roomNumber = roomNumber;
         this.employeeID = employeeID;
         this.serviceDate = serviceDate;
+        this.serviceIsPaid = serviceIsPaid;
     }
-
 
     public int getServiceID() {
         return serviceID;
@@ -49,5 +51,13 @@ public class ServiceToRoom {
 
     public void setServiceDate(String serviceDate) {
         this.serviceDate = serviceDate;
+    }
+
+    public boolean getServiceIsPaid() {
+        return serviceIsPaid;
+    }
+
+    public void setServiceIsPaid(boolean serviceIsPaid) {
+        this.serviceIsPaid = serviceIsPaid;
     }
 }
