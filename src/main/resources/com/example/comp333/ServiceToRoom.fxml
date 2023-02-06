@@ -40,7 +40,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Service ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                  <TextField fx:id="serviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Service ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="serviceTypeField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="Room Number" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="roomNumberField" blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="Room Number" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -60,14 +60,14 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="servicePriceField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Employee ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="employeeIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="Employee ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
                </children>
             </GridPane>
-            <Button fx:id="addButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+            <Button fx:id="addButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="390.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -85,7 +85,7 @@
                   </RadialGradient>
                </textFill>
             </Button>
-            <Button fx:id="deleteButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="448.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
+            <Button fx:id="deleteButton" blendMode="SRC_ATOP" layoutX="98.0" layoutY="448.0" mnemonicParsing="false" onAction="#delteButtonOnAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -137,12 +137,13 @@
             </Button>
          </children>
       </Pane>
-      <TableView layoutX="290.0" layoutY="-3.0" prefHeight="468.0" prefWidth="433.0">
+      <TableView fx:id="serviceToRoomTable" layoutX="290.0" layoutY="-3.0" prefHeight="468.0" prefWidth="433.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Service ID" />
-          <TableColumn prefWidth="115.0" text="Room Number" />
-            <TableColumn prefWidth="115.0" text="Employee ID" />
-            <TableColumn prefWidth="127.0" text=" Date " />
+          <TableColumn fx:id="serviceIDColumn" prefWidth="75.0" text="Service ID" />
+          <TableColumn fx:id="roomNumberColumn" prefWidth="115.0" text="Room Number" />
+            <TableColumn fx:id="employeeIDColumn" prefWidth="102.0" text="Employee ID" />
+            <TableColumn fx:id="serveDateColumn" prefWidth="73.0" text=" Date " />
+            <TableColumn fx:id="serviceIsPaidColumn" prefWidth="67.0" text="Paid" />
         </columns>
       </TableView>
    </children>
