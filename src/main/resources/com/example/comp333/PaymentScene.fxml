@@ -23,7 +23,7 @@
    <children>
       <Pane layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
          <children>
-            <Label layoutX="74.0" layoutY="14.0" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #F5DEB3;" text="Payment" textFill="#321b1b">
+            <Label layoutX="74.0" layoutY="14.0" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #F5DEB3;" text="Checkout" textFill="#321b1b">
                <font>
                   <Font name="System Italic" size="34.0" />
                </font>
@@ -34,10 +34,10 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="169.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="85.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="103.1999755859375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="117.0" minHeight="0.0" prefHeight="4.800024414062506" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="152.79999999999998" minHeight="10.0" prefHeight="77.59999389648436" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="158.40000000000003" minHeight="10.0" prefHeight="113.60002441406246" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label prefHeight="30.0" prefWidth="115.0" text="Guest SSN" textFill="WHITE">
@@ -46,16 +46,6 @@
                      </font>
                   </Label>
                   <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </TextField>
-                  <Label prefHeight="21.0" prefWidth="121.0" text=" Booking ID" textFill="#f5f5f5" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="40.0" prefWidth="141.0" promptText="booking id" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -91,7 +81,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="424.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="ADD">
+            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="63.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="PAY">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -108,52 +98,22 @@
                      </stops>
                   </RadialGradient>
                </textFill>
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
             </Button>
-            <Button fx:id="updBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="473.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="UPDATE">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
-            <Button fx:id="delBtn" blendMode="SRC_ATOP" layoutX="98.0" layoutY="525.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="DELETE">
-               <textFill>
-                  <RadialGradient centerX="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-            </Button>
+            <Label layoutX="30.0" layoutY="398.0" prefHeight="28.0" prefWidth="150.0" style="-fx-border-color: #F5DEB3;" text="TOTAL PRICE" textFill="#9c8585" wrapText="true">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <TableView layoutX="326.0" layoutY="1.0" prefHeight="465.0" prefWidth="445.0">
          <columns>
-            <TableColumn prefWidth="101.0" text="Payment ID" />
-            <TableColumn prefWidth="62.0" text="SSN" />
-            <TableColumn prefWidth="98.0" text="Booking Id" />
-            <TableColumn prefWidth="94.0" text="Payment Way" />
-            <TableColumn prefWidth="92.0" text="Payment Day" />
+            <TableColumn prefWidth="116.0" text="SSN" />
+            <TableColumn prefWidth="155.19998168945312" text="Payment Way" />
+            <TableColumn prefWidth="174.39996337890625" text="Payment Day" />
          </columns>
       </TableView>
       <Pane layoutX="328.0" layoutY="461.0" prefHeight="145.0" prefWidth="445.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
