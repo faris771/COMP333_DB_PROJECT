@@ -85,10 +85,10 @@ create table Booking(
 CREATE TABLE PAYMENT(
 
 Payment_id INT PRIMARY KEY AUTO_INCREMENT,
-Booking_id int,
 Payment_way varchar(32),
 Payment_Date DATE,
-foreign key (Booking_id) references Booking (Booking_id),
+Guest_SSN int not null, 
+foreign key (Guest_SSN) references Guest (Guest_SSN)
 );
 -- DEFAULT INSERTIONS:
 
