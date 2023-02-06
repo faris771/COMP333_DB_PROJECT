@@ -142,7 +142,7 @@
           <TableColumn prefWidth="75.0" text="Service ID" />
           <TableColumn prefWidth="115.0" text="Room Number" />
             <TableColumn prefWidth="115.0" text="Employee ID" />
-            <TableColumn prefWidth="127.0" text=" service_date_time " />
+            <TableColumn prefWidth="127.0" text=" Date " />
         </columns>
       </TableView>
    </children>
