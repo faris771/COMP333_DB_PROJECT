@@ -69,14 +69,7 @@ public class ServiceController implements Initializable {
             String tstIfEmpty = (seviceIDField.getText());
             int serviceID;
 
-            if(tstIfEmpty.isEmpty()) {
-                serviceID = 420;
-            } else {
-                serviceID = Integer.parseInt(seviceIDField.getText());
-                flag = true;
-            }
-
-            if (serviceTypeField.getText().isBlank() || servicePriceField.getText().isBlank()) {
+            if (seviceIDField.getText().isBlank() || serviceTypeField.getText().isBlank() || servicePriceField.getText().isBlank()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -85,18 +78,16 @@ public class ServiceController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-
-//            if (seviceIDField.getText().isBlank()) {
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Please fill all the fields");
-//                alert.setContentText("");
-//                alert.showAndWait();
-//                flag = true;
-//                serviceID = 420;
-//
-//                return;
-//            }
+            try {
+                serviceID = Integer.parseInt(seviceIDField.getText());
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Service ID must be an integer");
+                alert.setContentText("");
+                alert.showAndWait();
+                return;
+            }
 
             try {
                 dummyService = new Service(serviceID, serviceTypeField.getText(),
@@ -112,17 +103,13 @@ public class ServiceController implements Initializable {
             }
 
             if (!checkIfServiceEXists(dummyService.getServiceID())) {
-                preparedStatement = connection.prepareStatement("INSERT INTO  SERVICE (service_type, service_price) VALUES (?,?)");
 
 
-//                if (serviceID == 420) {
-//                    preparedStatement.setString(1, "DEFAULT");
-//                } else {
-//                    preparedStatement.setString(1, dummyService.getServiceID() + "");
-//                }
+                preparedStatement = connection.prepareStatement("INSERT INTO  SERVICE VALUES (?,?,?)");
 
-                preparedStatement.setString(1, dummyService.getServiceType());
-                preparedStatement.setString(2, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
+                preparedStatement.setString(1,  dummyService.getServiceID()+ "");
+                preparedStatement.setString(2, dummyService.getServiceType());
+                preparedStatement.setString(3, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
                 preparedStatement.execute();
                 HelloApplication.AlertShow("Service Added Successfully", "ADDED ", Alert.AlertType.INFORMATION);
 

@@ -79,7 +79,7 @@ public class GuestController implements Initializable {
             int SSN = Integer.parseInt ( SSN_field.getText () );
             // guest exists in the database
             if (checkIfGuestExists ( SSN )) {
-                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "1200373" );
+                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
 
                 // get guest data
                 preparedStatement = connection.prepareStatement ( "SELECT * FROM guest G WHERE G.Guest_SSN = ?" );
@@ -116,7 +116,7 @@ public class GuestController implements Initializable {
             // guest doesn't exist, we can add.
             if (! checkIfGuestExists ( Guest.gst.getGuestSSN () )) {
 
-                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "1200373" );
+                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
                 preparedStatement = connection.prepareStatement ( "insert into guest values (?,?,?,?,?,?)");
 
                 preparedStatement.setString ( 1, Guest.gst.getGuestSSN () + "" );
@@ -186,7 +186,7 @@ public class GuestController implements Initializable {
         PreparedStatement preparedStatement = null;
         try {
 
-                connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "1200373" );
+            connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
                 preparedStatement = connection.prepareStatement ( "UPDATE guest G SET G.Guest_first_Name = ?," +
                         " G.Guest_father_Name = ?, G.Guest_family_Name = ?, " +
                         "G.Guest_email = ?, G.Guest_nationality = ? where Guest_SSn = ? ");
@@ -226,7 +226,7 @@ public class GuestController implements Initializable {
         PreparedStatement preparedStatement = null;
 
         try {
-            connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "1200373" );
+            connection = DriverManager.getConnection ( "jdbc:mysql://localhost:3306/hotel_comp333", "root", "password" );
             preparedStatement = connection.prepareStatement ( "SELECT G.Guest_SSN from guest G WHERE G.Guest_SSN = ?" );
             preparedStatement.setString ( 1, SSN + "" );
             ResultSet rs = preparedStatement.executeQuery ();
