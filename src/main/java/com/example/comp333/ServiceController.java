@@ -145,8 +145,17 @@ public class ServiceController implements Initializable {
             alert.showAndWait();
             return;
         }
-        int tobeDeletedServiceID = Integer.parseInt(seviceIDField.getText()); // get the ID from the text field
-
+        int tobeDeletedServiceID; // get the ID from the text field
+        try {
+            tobeDeletedServiceID = Integer.parseInt(seviceIDField.getText());
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Service ID must be an integer");
+            alert.setContentText("");
+            alert.showAndWait();
+            return;
+        }
 
         if (checkIfServiceEXists(tobeDeletedServiceID)) { // if the service exists then delete it
 
@@ -194,11 +203,23 @@ public class ServiceController implements Initializable {
             alert.showAndWait();
             return;
         }
+        int serviceID ; //;
+        try {
+            serviceID = Integer.parseInt(seviceIDField.getText());
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Service ID must be an integer");
+            alert.setContentText("");
+            alert.showAndWait();
+            return;
+        }
+
 
 
 
         try {
-            Service dummyService = new Service(Integer.parseInt(seviceIDField.getText()), serviceTypeField.getText(),
+            Service dummyService = new Service(serviceID, serviceTypeField.getText(),
                     Double.parseDouble(servicePriceField.getText()));
 
             if (checkIfServiceEXists(dummyService.getServiceID())) {
@@ -209,6 +230,8 @@ public class ServiceController implements Initializable {
                 preparedStatement.setString(2, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
                 preparedStatement.setString(3, dummyService.getServiceID() + "");
                 preparedStatement.execute();
+                HelloApplication.AlertShow("Service Updated Successfully", "ADDED ", Alert.AlertType.INFORMATION);
+
 
             } else {
                 HelloApplication.clearTextFields(seviceIDField);
@@ -216,9 +239,13 @@ public class ServiceController implements Initializable {
 
             }
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            ex.getCause();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Please enter a valid service ID and price");
+            alert.showAndWait();
+            return;
         }
         serviceObservableListList.clear();
         tableView.refresh();
@@ -276,9 +303,9 @@ public class ServiceController implements Initializable {
                 serviceObservableListList.add(new Service(serviceID, serviceType, servicePrice));
 
             }
-            serviceIDCol.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
-            serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
-            servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("servicePrice"));
+            serviceIDCol.setCellValueFactory(new PropertyValueFactory<>("serviceID")); // set the value of the column to the value of the serviceID
+            serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType")); // set the value of the column to the value of the serviceType
+            servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("servicePrice")); // set the value of the column to the value of the servicePrice
             tableView.setItems(serviceObservableListList);
 
         } catch (SQLException e) {

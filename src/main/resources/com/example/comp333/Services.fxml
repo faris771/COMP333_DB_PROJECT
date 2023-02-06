@@ -42,7 +42,7 @@
                                 <Font name="Arial Rounded MT Bold" size="17.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID (Default in adding)" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                        <TextField fx:id="seviceIDField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="ID" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                             <font>
                                 <Font size="13.0" />
                             </font>
