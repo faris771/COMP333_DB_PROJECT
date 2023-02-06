@@ -39,6 +39,9 @@ public class ServiceToRoomController implements Initializable {
     private TableColumn<ServiceToRoom, String> serveDateColumn;
     @FXML
     private TableColumn<ServiceToRoom, String> serveTimeColumn;
+    @FXML
+    private TableColumn<ServiceToRoom, String> serviceIsPaidColumn;
+
 
     private ObservableList<ServiceToRoom> serviceToRoomObservableList = FXCollections.observableArrayList();
 
@@ -56,6 +59,10 @@ public class ServiceToRoomController implements Initializable {
                 int serviceID = queryResult.getInt("service_id");
                 int roomNumber = queryResult.getInt("room_number");
                 int employeeID = queryResult.getInt("eid");
+                boolean serviceIsPaidBool = queryResult.getBoolean("ispaid");
+
+                String serviceIsPaid = String.valueOf(serviceIsPaidBool);
+
                 //String dateTime = queryResult.getString("service_date_time"); // DEFAULT DATE ADDED TO TABLE VIEW
                 //
                 java.sql.Date date = queryResult.getDate("service_date");
@@ -63,13 +70,15 @@ public class ServiceToRoomController implements Initializable {
                 String serviceDate = HelloApplication.formatter.format(date);
 
 //                String timeString = String.valueOf(queryResult.getTime("service_time")); // DEFAULT DATE ADDED TO TABLE VIEW
-                serviceToRoomObservableList.add(new ServiceToRoom(serviceID, roomNumber, employeeID, serviceDate)); // DEFAULT DATE ADDED TO TABLE VIEW
+                serviceToRoomObservableList.add(new ServiceToRoom(serviceID, roomNumber, employeeID, serviceDate, false)); // DEFAULT DATE ADDED TO TABLE VIEW
 
             }
             serviceIDColumn.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
             roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
             employeeIDColumn.setCellValueFactory(new PropertyValueFactory<>("employeeID"));
             serveDateColumn.setCellValueFactory(new PropertyValueFactory<>("serviceDate")); //SAME AS THE CLASS
+            serviceIsPaidColumn.setCellValueFactory(new PropertyValueFactory<>("serviceIsPaid"));
+
 //            serveTimeColumn.setCellValueFactory(new PropertyValueFactory<>("timeString")); // DEFAULT DATE ADDED TO TABLE VIEW
 
             serviceToRoomTable.setItems(serviceToRoomObservableList);
@@ -92,6 +101,10 @@ public class ServiceToRoomController implements Initializable {
                 int serviceID = queryResult.getInt("service_id");
                 int roomNumber = queryResult.getInt("room_number");
                 int employeeID = queryResult.getInt("eid");
+                boolean serviceIsPaidBool = queryResult.getBoolean("ispaid");
+                String serviceIsPaid = String.valueOf(serviceIsPaidBool);
+
+
                 //String dateTime = queryResult.getString("service_date_time"); // DEFAULT DATE ADDED TO TABLE VIEW
                 //
                 java.sql.Date date = queryResult.getDate("service_date");
@@ -99,7 +112,7 @@ public class ServiceToRoomController implements Initializable {
                 String serviceDate = HelloApplication.formatter.format(date);
 
 //                String timeString = String.valueOf(queryResult.getTime("service_time")); // DEFAULT DATE ADDED TO TABLE VIEW
-                serviceToRoomObservableList.add(new ServiceToRoom(serviceID, roomNumber, employeeID, serviceDate)); // DEFAULT DATE ADDED TO TABLE VIEW
+                serviceToRoomObservableList.add(new ServiceToRoom(serviceID, roomNumber, employeeID, serviceDate,serviceIsPaidBool)); // DEFAULT DATE ADDED TO TABLE VIEW
 
             }
             serviceIDColumn.setCellValueFactory(new PropertyValueFactory<>("serviceID"));
@@ -123,6 +136,7 @@ public class ServiceToRoomController implements Initializable {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         boolean serviceExists = false;
+
 
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM service_to_room WHERE Service_ID = ? AND ROOM_NUMBER = ?");
@@ -185,7 +199,8 @@ public class ServiceToRoomController implements Initializable {
             try {
                 preparedStatement.execute();
             } catch (Exception e) {
-                HelloApplication.AlertShow("make sure service, room, employee already exist","Error",  Alert.AlertType.ERROR);
+                HelloApplication.AlertShow("make sure service, room, employee already exist", "Error", Alert.AlertType.ERROR);
+
                 return;
             }
             HelloApplication.AlertShow( "Service added successfully","Success", Alert.AlertType.INFORMATION);
