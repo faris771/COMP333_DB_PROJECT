@@ -320,7 +320,6 @@ public class ServiceController implements Initializable {
         DataBaseConnection connection = new DataBaseConnection();
         String guestShowQuery = "SELECT * FROM Service";
         try {
-
             Connection connectDB = connection.getConnection();
             Statement statement = connectDB.createStatement();
             ResultSet queryRes = statement.executeQuery(guestShowQuery);

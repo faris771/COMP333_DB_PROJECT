@@ -57,6 +57,9 @@ public class GuestController implements Initializable {
     TableColumn<Guest, String> familyNameCol;
 
     @FXML
+    TableColumn<Guest, String> phoneNumberCol;
+
+    @FXML
     TableColumn<Guest, String> emailCol;
 
     @FXML
@@ -67,41 +70,6 @@ public class GuestController implements Initializable {
 
     public  void  exitGuestScene(ActionEvent event) {
         HelloApplication.changeScene ( event,  "MenuScene.fxml","Hotel DataBase!" ,600, 562);
-    }
-
-    @FXML
-    private void fillFieldsWithSearchRes (ActionEvent event) {
-        PreparedStatement preparedStatement = null;
-        try {
-
-            int SSN = Integer.parseInt ( SSN_field.getText () );
-            // guest exists in the database
-            if (checkIfGuestExists ( SSN )) {
-                DataBaseConnection connectDB = new DataBaseConnection ();
-                Connection connection = connectDB.getConnection ();
-
-                // get guest data
-                preparedStatement = connection.prepareStatement ( "SELECT * FROM guest G WHERE G.Guest_SSN = ?" );
-                preparedStatement.setString ( 1, SSN + "" );
-
-                // exec the query to get guest data for updating
-                ResultSet rs1 = preparedStatement.executeQuery ();
-
-                // here we have old guest information in text fields, we can overwrite them to update.
-               while (rs1.next ()) {
-                   SSN_field.setText ( rs1.getInt ( "Guest_SSN" ) + "" );
-                   firstNameField.setText ( rs1.getString ( "Guest_first_Name" ) );
-                   fatherNameField.setText ( rs1.getString ( "Guest_father_Name" ) );
-                   familyNameField.setText ( rs1.getString ( "Guest_family_Name" ) );
-                   emailField.setText ( rs1.getString ( "Guest_email" ) );
-                   nationalityField.setText ( rs1.getString ( "Guest_nationality" ) );
-               }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace ();
-            e.getCause ();
-        }
-
     }
 
     @FXML
@@ -178,12 +146,14 @@ public class GuestController implements Initializable {
                 HelloApplication.AlertShow ( "Error, a guest with this SSN already exists", "duplicate SSN", Alert.AlertType.ERROR );
             }
 
-            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
-                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
-
         } catch (SQLException ex) {
             ex.printStackTrace ();
             ex.getCause ();
+        }
+        finally {
+            refreshTable();
+            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
         }
     }
     @FXML
@@ -206,15 +176,17 @@ public class GuestController implements Initializable {
             // if the user confirms the deletion
             if ( result.isPresent () && result.get() == ButtonType.OK) {
                 ps.execute ();
-                HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
-                        fatherNameField,nationalityField, emailField , phoneNumberTextField);
-
             }
 
 
         } catch (Exception e) {
             e.printStackTrace ();
             e.getCause ();
+        }
+        finally {
+            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
+            refreshTable();
         }
     }
 
@@ -240,11 +212,10 @@ public class GuestController implements Initializable {
                 }
             } catch (Exception e) {
                 HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
-                HelloApplication.clearTextFields ( SSN_field );
                 return;
             }
 
-
+                // if the user didn't enter a new SSN, we will use the old one.
                 int SSN = HelloApplication.isTextFieldEmpty ( SSN_field ) ? tableView.getSelectionModel ().getSelectedItem ().getGuestSSN () : Integer.parseInt ( SSN_field.getText () );
                 String firstName = HelloApplication.isTextFieldEmpty(firstNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFirstName () : firstNameField.getText ();
                 String fatherName = HelloApplication.isTextFieldEmpty(fatherNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFatherName () : fatherNameField.getText ();
@@ -294,18 +265,17 @@ public class GuestController implements Initializable {
                 // if the user confirms the update action
                 if ( result.isPresent () && result.get() == ButtonType.OK) {
                     preparedStatement.execute ();
-                    tableView.refresh();
-                    HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
-                            fatherNameField,nationalityField, emailField , phoneNumberTextField);
                 }
 
         } catch (SQLException e) {
             e.printStackTrace ();
             e.getCause ();
         }
-
-
-
+        finally {
+            tableView.refresh();
+            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
+        }
     }
 
 
@@ -363,6 +333,7 @@ public class GuestController implements Initializable {
             familyNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFamilyName"));
             emailCol.setCellValueFactory ( new PropertyValueFactory<> ("guestEmail"));
             nationalityCol.setCellValueFactory ( new PropertyValueFactory<> ("guestNationality"));
+            phoneNumberCol.setCellValueFactory ( new PropertyValueFactory<> ("guestPhoneNumber"));
 
             tableView.setItems ( guestObservableList );
 
@@ -408,10 +379,37 @@ public class GuestController implements Initializable {
         catch (Exception e) {
             e.printStackTrace ();
         }
-
-
-
     }
+    // method to refresh the table view to show the updated data after any action
+    private void refreshTable() {
+
+        DataBaseConnection connection = new DataBaseConnection ();
+        String guestShowQuery = "SELECT * FROM Guest";  // query to get all the guests
+
+        try {
+            Connection connectDB = connection.getConnection (); // get the connection
+            Statement statement = connectDB.createStatement (); // create a statement
+            ResultSet queryRes = statement.executeQuery (guestShowQuery);   // execute the query
+
+            tableView.getItems ().clear (); // clear the table view
+
+            while (queryRes.next ()) {
+                tableView.getItems ().add ( new Guest ( queryRes.getInt ( "Guest_SSN" ),
+                        queryRes.getString ( "Guest_first_Name" ), queryRes.getString ( "Guest_father_Name" ),
+                        queryRes.getString ( "Guest_family_Name" ), queryRes.getString ( "Guest_email" ),
+                         queryRes.getString ( "Guest_nationality" ), queryRes.getString ( "phone_num" ))); // add the new data to the table view
+
+            }
+
+            statement.close ();
+
+        } catch (SQLException e) {
+            e.printStackTrace ();
+            e.getCause ();
+        }
+    }
+
+
 }
 
 

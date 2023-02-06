@@ -21,23 +21,21 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.PaymentController">
    <children>
-      <Pane layoutX="10.0" layoutY="10.0" prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
+      <Pane layoutX="2.0" layoutY="-1.0" prefHeight="607.0" prefWidth="325.0" style="-fx-background-color: #2F4F4F;">
          <children>
             <Label layoutX="74.0" layoutY="14.0" prefHeight="50.0" prefWidth="149.0" style="-fx-background-color: #F5DEB3;" text="Checkout" textFill="#321b1b">
                <font>
                   <Font name="System Italic" size="34.0" />
                </font>
             </Label>
-            <GridPane layoutX="-6.0" layoutY="64.0" prefHeight="304.0" prefWidth="321.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
+            <GridPane layoutY="64.0" prefHeight="202.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 2px;">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="152.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="169.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="154.5999755859375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="10.0" prefWidth="161.0000244140625" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="112.0" minHeight="8.0" prefHeight="103.1999755859375" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="117.0" minHeight="0.0" prefHeight="4.800024414062506" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="152.79999999999998" minHeight="10.0" prefHeight="77.59999389648436" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="158.40000000000003" minHeight="10.0" prefHeight="113.60002441406246" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="226.40001831054687" minHeight="8.0" prefHeight="104.19999999999999" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="152.79999999999998" minHeight="0.0" prefHeight="93.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label prefHeight="30.0" prefWidth="115.0" text="Guest SSN" textFill="WHITE">
@@ -45,43 +43,33 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                  <TextField fx:id="ssnTextField" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <Label prefHeight="21.0" prefWidth="135.0" text="Payment Way" textFill="WHITE" GridPane.rowIndex="2">
+                  <Label prefHeight="49.0" prefWidth="135.0" text="Payment Way" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="21.0" prefWidth="130.0" text=" Payment Day" textFill="WHITE" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
-                     </font>
-                  </Label>
-                  <TextField blendMode="SRC_ATOP" prefHeight="37.0" prefWidth="141.0" promptText="Day" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </TextField>
-                  <HBox prefHeight="76.0" prefWidth="166.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <HBox prefHeight="98.0" prefWidth="156.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <RadioButton fx:id="paymentWayBtn" mnemonicParsing="false" prefHeight="73.0" prefWidth="92.0" text="Cash" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" prefHeight="73.0" prefWidth="76.0" text="cards" textFill="WHITE">
+                        <RadioButton fx:id="cardRadioBtn" mnemonicParsing="false" prefHeight="73.0" prefWidth="76.0" text="card" textFill="WHITE">
                            <font>
                               <Font size="17.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="cashRadioBtn" mnemonicParsing="false" prefHeight="73.0" prefWidth="92.0" text="Cash" textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
                            </font>
                         </RadioButton>
                      </children>
                   </HBox>
                </children>
             </GridPane>
-            <Button fx:id="addBtn" blendMode="SRC_ATOP" layoutX="63.0" layoutY="480.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="PAY">
+            <Button fx:id="payBtn" blendMode="SRC_ATOP" layoutX="24.0" layoutY="390.0" mnemonicParsing="false" onAction="#payBtnOnAction" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: #F5DEB3;" text="PAY">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -102,18 +90,30 @@
                   <Font name="Arial" size="22.0" />
                </font>
             </Button>
-            <Label layoutX="30.0" layoutY="398.0" prefHeight="28.0" prefWidth="150.0" style="-fx-border-color: #F5DEB3;" text="TOTAL PRICE" textFill="#9c8585" wrapText="true">
+            <Label layoutX="24.0" layoutY="340.0" prefHeight="28.0" prefWidth="150.0" style="-fx-border-color: #F5DEB3;" text="TOTAL BILL" textFill="#9c8585" wrapText="true">
                <font>
                   <Font name="Arial" size="22.0" />
                </font>
             </Label>
+            <Label fx:id="totalBillLabel" layoutX="191.0" layoutY="337.0" prefHeight="34.0" prefWidth="76.0" text="00.00$" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="136.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/request-money.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <TableView layoutX="326.0" layoutY="1.0" prefHeight="465.0" prefWidth="445.0">
+      <TableView fx:id="paymentTableView" layoutX="326.0" layoutY="1.0" prefHeight="465.0" prefWidth="445.0">
          <columns>
-            <TableColumn prefWidth="116.0" text="SSN" />
-            <TableColumn prefWidth="155.19998168945312" text="Payment Way" />
-            <TableColumn prefWidth="174.39996337890625" text="Payment Day" />
+            <TableColumn fx:id="paymentIDCol" prefWidth="91.99993896484375" text="Payment ID" />
+            <TableColumn fx:id="SSNCol" prefWidth="32.800048828125" text="SSN" />
+            <TableColumn fx:id="paymentWayCol" maxWidth="1000.0" prefWidth="94.39999389648438" text="Payment Way" />
+            <TableColumn fx:id="paymentDateCol" maxWidth="1000.0" minWidth="0.0" prefWidth="113.5999755859375" text="Payment Date" />
+            <TableColumn fx:id="amountPaidCol" maxWidth="1000.0" prefWidth="112.800048828125" text="Amount paid" />
          </columns>
       </TableView>
       <Pane layoutX="328.0" layoutY="461.0" prefHeight="145.0" prefWidth="445.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
@@ -123,7 +123,7 @@
                   <Image url="@images/money-bag-emoji.png" />
                </image>
             </ImageView>
-            <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #F5DEB3;" text="Exit">
+            <Button fx:id="exitBtn" blendMode="SRC_ATOP" layoutX="33.0" layoutY="69.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #F5DEB3;" text="Exit">
                <textFill>
                   <RadialGradient centerX="0.5" radius="0.5">
                      <stops>
@@ -144,11 +144,6 @@
             <ImageView fitHeight="92.0" fitWidth="76.0" layoutX="290.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/money-bag-emoji.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="311.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/request-money.png" />
                </image>
             </ImageView>
             <Label layoutX="177.0" layoutY="42.0" prefHeight="17.0" prefWidth="121.0" text="Trust us" textFill="WHITE">

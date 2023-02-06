@@ -70,14 +70,11 @@ public class HelloApplication extends Application {
     }
 
     public static void AlertShow(String text, String title, Alert.AlertType  type) {
-
         Alert alert = new Alert (type);
         alert.setContentText ( text );
         alert.setTitle ( title );
         alert.show ();
-
     }
-
 
     public static void main(String[] args) {
         launch();

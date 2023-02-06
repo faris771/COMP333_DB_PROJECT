@@ -131,13 +131,13 @@
                   </Button>
                </children>
             </Pane>
-            <TableView fx:id="bookingTableView" layoutX="310.0" layoutY="6.0" prefHeight="470.0" prefWidth="642.0">
+            <TableView fx:id="bookingTableView" layoutX="310.0" layoutY="3.0" prefHeight="473.0" prefWidth="728.0">
                <columns>
                   <TableColumn fx:id="IDCol" prefWidth="83.199951171875" text="Booking ID" />
-                  <TableColumn fx:id="roomNumCol" prefWidth="97.5999755859375" text="Room number" />
-                  <TableColumn fx:id="SSNCol" prefWidth="83.99993896484375" text="Guest SSN" />
-                  <TableColumn fx:id="startDateCol" minWidth="7.2000732421875" prefWidth="146.40008544921875" text="Start Date" />
-                  <TableColumn fx:id="endDateCol" minWidth="0.0" prefWidth="231.19998779296873" text="End Date" />
+                  <TableColumn fx:id="roomNumCol" prefWidth="154.13327026367188" text="Room number" />
+                  <TableColumn fx:id="SSNCol" prefWidth="111.46673583984375" text="Guest SSN" />
+                  <TableColumn fx:id="startDateCol" minWidth="7.2000732421875" prefWidth="147.199951171875" text="Start Date" />
+                  <TableColumn fx:id="endDateCol" minWidth="0.0" prefWidth="230.4000244140625" text="End Date" />
                </columns>
             </TableView>
             <Pane layoutX="308.0" layoutY="477.0" prefHeight="126.0" prefWidth="731.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">

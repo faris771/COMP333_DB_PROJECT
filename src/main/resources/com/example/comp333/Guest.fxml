@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="579.0" prefWidth="754.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
+<AnchorPane prefHeight="579.0" prefWidth="1200.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.comp333.GuestController">
    <children>
       <Pane prefHeight="596.0" prefWidth="312.0" style="-fx-background-color: #2F4F4F;">
          <children>
@@ -46,7 +46,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="SSN_field" blendMode="SRC_ATOP" onAction="#fillFieldsWithSearchRes" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
+                  <TextField fx:id="SSN_field" blendMode="SRC_ATOP" prefHeight="38.0" prefWidth="141.0" promptText="SSN" style="-fx-background-color: #808080; -fx-border-color: #F5DEB3; -fx-border-width: 3px;" GridPane.columnIndex="1">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -169,24 +169,25 @@
             </Button>
          </children>
       </Pane>
-      <TableView fx:id="tableView" layoutX="307.0" layoutY="64.0" prefHeight="393.0" prefWidth="455.0">
+      <TableView fx:id="tableView" layoutX="307.0" layoutY="64.0" prefHeight="394.0" prefWidth="892.0">
         <columns>
-          <TableColumn fx:id="SSNCol" prefWidth="60.0" text="SSN" />
-          <TableColumn fx:id="firstNameCol" prefWidth="88.0" text="First Name" />
-            <TableColumn fx:id="fatherNameCol" prefWidth="93.0" text="Father Name" />
-            <TableColumn fx:id="familyNameCol" prefWidth="81.0" text="Family Name" />
-            <TableColumn fx:id="emailCol" prefWidth="56.0" text="email" />
-            <TableColumn fx:id="nationalityCol" prefWidth="71.0" text="nationality" />
+          <TableColumn fx:id="SSNCol" prefWidth="90.39996337890625" text="SSN" />
+          <TableColumn fx:id="firstNameCol" prefWidth="105.60003662109375" text="First Name" />
+            <TableColumn fx:id="fatherNameCol" prefWidth="132.7999267578125" text="Father Name" />
+            <TableColumn fx:id="familyNameCol" prefWidth="129.60009765625" text="Family Name" />
+            <TableColumn fx:id="emailCol" prefWidth="103.2000732421875" text="email" />
+            <TableColumn fx:id="nationalityCol" prefWidth="128.0" text="nationality" />
+            <TableColumn fx:id="phoneNumberCol" prefWidth="195.99993896484375" text="phone number" />
         </columns>
       </TableView>
-      <Pane layoutX="308.0" layoutY="451.0" prefHeight="145.0" prefWidth="455.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
+      <Pane layoutX="308.0" layoutY="451.0" prefHeight="146.0" prefWidth="890.0" style="-fx-background-color: #2F4F4F; -fx-border-color: #F5DEB3; -fx-border-width: 3px;">
          <children>
             <Label layoutX="14.0" layoutY="22.0" prefHeight="25.0" prefWidth="358.0" text="Stay with us and experience comfort, luxury," textFill="WHITE">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="56.0" prefHeight="26.0" prefWidth="433.0" text="discover why we are the perfect choice for your next visit" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="56.0" prefHeight="26.0" prefWidth="422.0" text="discover why we are the perfect choice for your next visit" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="17.0" />
                </font>
