@@ -60,12 +60,12 @@ create table service_to_room( -- SAME AS 'PROVIDE'
   room_number int,
   eid int,
   service_id int,
+  isPaid bool DEFAULT(FALSE),
   service_date DATE DEFAULT ( current_date()),
   primary key (room_number, eid, service_id),
   foreign key (room_number) references room (room_number),
   foreign key (eid) references employee (eid),
-  foreign key (service_id) references service(service_id),
-  isPaid bool
+  foreign key (service_id) references service(service_id)
 
 );
 
@@ -92,6 +92,7 @@ Guest_SSN int not null,
 amountPaid double,
 foreign key (Guest_SSN) references Guest (Guest_SSN)
 );
+alter table booking auto_increment =1;
 -- DEFAULT INSERTIONS:
 
 -- EMP TABLE:
@@ -165,6 +166,61 @@ VALUES ('Cleaning', 0);
 -- INSERTIONS TO SERVICE TO ROOM TABLE
 INSERT INTO service_to_room (room_number, eid, service_id)
 VALUES (101, 1000, 1);
+insert INTO Guest (guest_ssn,Guest_first_Name,Guest_family_Name,Guest_father_Name,Guest_email,Guest_nationality,phone_num)
+values (12345,'ramez','yazeed','ibdah','ahmad@gmail.com','PS','059927444'),
+(1283,'amro','ahmad','saif','amro@gmail.com','PS','05983781344') ,
+(1344,'narmeen','ibdah','ibdah','narmeen@gmail.com','PS','0259390233'),
+(1256,'tala' , 'mosheer' , 'sharif', 'tala@outlook.com','ps','0596349522'),
+(1239,'mohammed','sh','husni','moh@gmail.com','ps','0599999999'),
+(1033,'ahmed','mohammed','hasan','ahmad@gmail.com','ps','0599999999');
 
 
+insert into Booking (room_number,guest_ssn,Starting_date , end_date)
+values (301,1256,'2023-1-1','2023-1-3'),
+	   (303,1344,'2022-2-9','2022-2-19'),
+	   (302,1239,'2023-1-1','2023-1-3'),
+	   (301,1239,'2023-1-1','2023-1-3'),
+       (202,1033,'2023-1-1','2023-1-3'),
+	   (204,1344,'2023-1-1','2023-1-3')
+       
+;
+select * from Guest;
+select * from booking;
 -- 
+#Name  of all guest who book room number 301
+select G.Guest_first_Name 
+From guest G , booking B
+where G.Guest_SSN = B.guest_ssn
+ and B.room_number = 301;
+-- 
+select  b.Booking_id
+from guest g , Booking b
+where g.Guest_nationality = 'ps' and
+g.Guest_SSN = b.Guest_SSN;
+--
+select  b.Booking_id
+from guest g , Booking b
+where g.Guest_first_Name = 'mohammed' and
+g.Guest_SSN = b.Guest_SSN;
+-- name of guest how reserved room 302 and 301
+select  G.Guest_first_Name
+from Guest G , booking B 
+where G.Guest_SSN = B.guest_ssn 
+and B.room_number = 302 and G.guest_ssn IN(
+select  B.guest_ssn
+from  booking B 
+where  B.room_number = 301
+);
+#find name all guest who is room_type = "sweet"
+
+select g.Guest_first_Name
+from guest g ,Booking b , room r
+where b.room_number = r.room_number and b.guest_ssn = g.guest_ssn
+and  r.room_type = 'sweet';
+-- the employee with max salary
+select employee.employee_first_Name
+from employee
+where employee.salary  = (
+select max(employee.salary)
+from employee
+);
