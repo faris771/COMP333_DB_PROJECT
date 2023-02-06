@@ -64,7 +64,8 @@ create table service_to_room( -- SAME AS 'PROVIDE'
   primary key (room_number, eid, service_id),
   foreign key (room_number) references room (room_number),
   foreign key (eid) references employee (eid),
-  foreign key (service_id) references service(service_id)
+  foreign key (service_id) references service(service_id),
+  isPaid bool
 
 );
 
