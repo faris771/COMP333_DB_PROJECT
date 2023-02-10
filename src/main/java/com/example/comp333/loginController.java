@@ -51,11 +51,23 @@ public class loginController {
 
             DataBaseConnection connectNow = new DataBaseConnection (); // create new object of DataBaseConnection class
             Connection connectDB = connectNow.getConnection ();
-            String verifyLogin = "SELECT EID FROM EMPLOYEE WHERE  EID = " + userName.getText () + " AND PASSWORD =  '" + password.getText () + "'"; // query to check if username and password are correct
+            String verifyLogin = "";
+            try {
+                verifyLogin = "SELECT EID FROM EMPLOYEE WHERE  EID = " + userName.getText() + " AND PASSWORD =  '" + password.getText() + "'"; // query to check if username and password are correct
+            } catch (Exception e) {
+                HelloApplication.AlertShow("Username should be Integer", "Error", Alert.AlertType.ERROR);
+                return;
+            }
             try {
 
                 Statement statement = connectDB.createStatement (); // create statement
-                ResultSet queryResult = statement.executeQuery ( verifyLogin ); // execute query
+                ResultSet queryResult;
+                try {
+                    queryResult = statement.executeQuery ( verifyLogin ); // execute query
+                } catch (Exception e) {
+                    HelloApplication.AlertShow("Username should be Integer", "Error", Alert.AlertType.ERROR);
+                    return;
+                }
 
 
                 if (queryResult.next ()) { // if query returned result (upd by Hamza)
