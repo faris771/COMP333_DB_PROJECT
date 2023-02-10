@@ -19,7 +19,13 @@ public class Guest {
         this.guestFamilyName = guestFamilyName;
         this.guestEmail = guestEmail;
         this.guestNationality = guestNationality;
-        setGuestPhoneNumber ( guestPhoneNumber );
+        try {
+            setGuestPhoneNumber ( guestPhoneNumber );
+        }
+        catch (IllegalArgumentException e){
+
+        }
+
     }
 
     public int getGuestSSN() {

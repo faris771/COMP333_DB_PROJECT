@@ -4,7 +4,7 @@ USE HOTEL_COMP333;
 
 create table employee (
 
-  eid int primary key AUTO_INCREMENT, -- 1 2 3 
+  eid int primary key AUTO_INCREMENT, -- 1000 , 1001,1002,1003
   employee_SSN int UNIQUE,  
   employee_first_Name varchar(32),
   employee_father_Name varchar(32),
@@ -167,12 +167,12 @@ VALUES ('Cleaning', 0);
 INSERT INTO service_to_room (room_number, eid, service_id)
 VALUES (101, 1000, 1);
 insert INTO Guest (guest_ssn,Guest_first_Name,Guest_family_Name,Guest_father_Name,Guest_email,Guest_nationality,phone_num)
-values (12345,'ramez','yazeed','ibdah','ahmad@gmail.com','PS','059927444'),
-(1283,'amro','ahmad','saif','amro@gmail.com','PS','05983781344') ,
+values (12345,'ramez','yazeed','ibdah','ahmad@gmail.com','PS','0599274443'),
+(1283,'amro','ahmad','saif','amro@gmail.com','PS','0598378134') ,
 (1344,'narmeen','ibdah','ibdah','narmeen@gmail.com','PS','0259390233'),
 (1256,'tala' , 'mosheer' , 'sharif', 'tala@outlook.com','ps','0596349522'),
-(1239,'mohammed','sh','husni','moh@gmail.com','ps','0599999999'),
-(1033,'ahmed','mohammed','hasan','ahmad@gmail.com','ps','0599999999');
+(1239,'mohammed','sh','husni','moh@gmail.com','ps','0599293678'),
+(1033,'ahmed','mohammed','hasan','ahmad@gmail.com','ps','0599929359');
 
 
 insert into Booking (room_number,guest_ssn,Starting_date , end_date)
