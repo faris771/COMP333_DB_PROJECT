@@ -31,7 +31,7 @@ public class PaymentController implements Initializable {
     TableColumn<Payment, String> paymentTypeCol;
 
     @FXML
-    TableColumn<Payment, String> paymentIDCol;
+    TableColumn<Payment, Integer> paymentIDCol;
 
     @FXML
     TableColumn<Payment, String> paymentDateCol;
@@ -54,13 +54,7 @@ public class PaymentController implements Initializable {
     Label totalBillLabel;
 
 
-
-
-
-
-
     ObservableList<Payment> paymentObservableList = FXCollections.observableArrayList ();
-
 
 
     public  void  exitButton(ActionEvent event){
@@ -87,7 +81,7 @@ public class PaymentController implements Initializable {
             ResultSet queryResult = statement.executeQuery ( paymentsShowQuery );
 
             while (queryResult.next ()) {
-                paymentObservableList.add ( new Payment ( queryResult.getInt ( "Guest_SSN" ), queryResult.getString ( "Payment_way" ), queryResult.getString ( "Payment_Date" ), queryResult.getDouble ( "amountPaid" ), queryResult.getInt ( "payment_id" ) ) );
+                paymentObservableList.add ( new Payment ( queryResult.getInt ( "Guest_SSN" ), queryResult.getString ( "Payment_way" ), queryResult.getString ( "Payment_Date" ), queryResult.getDouble ( "amountPaid" ), queryResult.getInt ( "Payment_id" ) ) );
             }
 
             SSNCol.setCellValueFactory ( new PropertyValueFactory<> ( "SSN" ) );

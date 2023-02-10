@@ -79,14 +79,7 @@ public class GuestController implements Initializable {
         try {
 
             try {
-                Integer.parseInt ( SSN_field.getText () );
-            }catch (Exception e) {
-                HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
-                return;
-            }
-
-            try {
-                if (SSN_field.getText ().isEmpty () || firstNameField.getText ().isEmpty () || fatherNameField.getText ().isEmpty () || familyNameField.getText ().isEmpty () || emailField.getText ().isEmpty () || nationalityField.getText ().isEmpty () || phoneNumberTextField.getText ().isEmpty ()) {
+                if (HelloApplication.isTextFieldEmpty ( SSN_field, firstNameField, fatherNameField, familyNameField, emailField, nationalityField, phoneNumberTextField )) {
                     HelloApplication.AlertShow ( "Please fill all fields", "Empty fields", Alert.AlertType.ERROR );
                     return;
                 }
@@ -94,6 +87,16 @@ public class GuestController implements Initializable {
                 e.printStackTrace ();
                 e.getCause ();
             }
+
+
+            try {
+                Integer.parseInt ( SSN_field.getText () );
+            }catch (Exception e) {
+                HelloApplication.AlertShow ( "Please enter a valid SSN, only digits are allowed", "Invalid SSN", Alert.AlertType.ERROR );
+                return;
+            }
+
+
 
             int SSN = Integer.parseInt ( SSN_field.getText () );
 
@@ -139,6 +142,8 @@ public class GuestController implements Initializable {
                 preparedStatement.setString ( 6, nationality );
                 preparedStatement.setString ( 7, phoneNumber );
                 preparedStatement.execute ();
+                refreshTable();
+
             }
             // guest exists already.
             else {
@@ -151,7 +156,6 @@ public class GuestController implements Initializable {
             ex.getCause ();
         }
         finally {
-            refreshTable();
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
                     fatherNameField,nationalityField, emailField , phoneNumberTextField);
         }
@@ -159,6 +163,24 @@ public class GuestController implements Initializable {
     @FXML
     // update guest data
     private void deleteBtnOnAction (ActionEvent event) {
+
+
+        try {
+
+            if (tableView.getSelectionModel ().getSelectedItem () == null) {
+                HelloApplication.AlertShow ( "Please select a guest to delete", "No guest selected", Alert.AlertType.ERROR );
+                return;
+            }
+
+        }catch ( Exception ewww) {
+            ewww.printStackTrace ();
+            ewww.getCause ();
+        }
+        finally {
+            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
+                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
+
+        }
 
         DataBaseConnection connectDB = new DataBaseConnection ();
         String bookingDeleteQuery = "DELETE FROM booking WHERE Booking_id = " + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
@@ -176,8 +198,8 @@ public class GuestController implements Initializable {
             // if the user confirms the deletion
             if ( result.isPresent () && result.get() == ButtonType.OK) {
                 ps.execute ();
+                refreshTable();
             }
-
 
         } catch (Exception e) {
             e.printStackTrace ();
@@ -391,13 +413,15 @@ public class GuestController implements Initializable {
             Statement statement = connectDB.createStatement (); // create a statement
             ResultSet queryRes = statement.executeQuery (guestShowQuery);   // execute the query
 
-            tableView.getItems ().clear (); // clear the table view
+            if (tableView.getItems () != null && !tableView.getItems ().isEmpty ()  )
+                // clear the table view
+                tableView.getItems ().clear ();
 
             while (queryRes.next ()) {
                 tableView.getItems ().add ( new Guest ( queryRes.getInt ( "Guest_SSN" ),
-                        queryRes.getString ( "Guest_first_Name" ), queryRes.getString ( "Guest_father_Name" ),
-                        queryRes.getString ( "Guest_family_Name" ), queryRes.getString ( "Guest_email" ),
-                         queryRes.getString ( "Guest_nationality" ), queryRes.getString ( "phone_num" ))); // add the new data to the table view
+                    queryRes.getString ( "Guest_first_Name" ), queryRes.getString ( "Guest_father_Name" ),
+                    queryRes.getString ( "Guest_family_Name" ), queryRes.getString ( "Guest_email" ),
+                    queryRes.getString ( "Guest_nationality" ), queryRes.getString ( "phone_num" ))); // add the new data to the table view
 
             }
 
