@@ -1,9 +1,14 @@
- <H1 align="center" > <strong> COMP33 Project </strong> </H1>
+ <H1 align="center" > <strong> COMP333 Project </strong> </H1>
 
- <H2 align="center" > <strong>Pharmacy Management System </strong> </H2>
+ <H2 align="center" > <strong>Hotel Database Managment System </strong> </H2>
  
  <img align="center" width="100%" src="https://user-images.githubusercontent.com/70337488/218222749-d38a8d8e-8812-46f3-bbdf-32568a059c88.jpeg">
  
+ <h2>
+ Hotel Database Managment System, Developed for the final project of the COMP333 Database course @BZU
+ </p>
+ 
+ </h2>
 
 <details align="center">
 <summary><b> Random ScreenShots ✔⭐</b></summary>
@@ -25,6 +30,11 @@
 <br />
 </table>
 </details>
+
+## Languages And Tools:
+
+-<img align="left" alt=  "Java" width="50px" src="https://logoeps.com/wp-content/uploads/2011/06/java-logo-vector.png" /> <img align="left" alt="Scene Builder" width="50px" src="https://i2.wp.com/gluonhq.com/wp-content/uploads/2015/02/SceneBuilderLogo.png?fit=781%2C781&ssl=1" /><img align="left" alt="GitHub" width="50px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" /> 
+<br/>
 
 
 
