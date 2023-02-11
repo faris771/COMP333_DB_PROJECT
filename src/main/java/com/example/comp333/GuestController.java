@@ -164,9 +164,7 @@ public class GuestController implements Initializable {
     // update guest data
     private void deleteBtnOnAction (ActionEvent event) {
 
-
         try {
-
             if (tableView.getSelectionModel ().getSelectedItem () == null) {
                 HelloApplication.AlertShow ( "Please select a guest to delete", "No guest selected", Alert.AlertType.ERROR );
                 return;
@@ -192,7 +190,6 @@ public class GuestController implements Initializable {
             // if the user confirms the deletion
             if ( result.isPresent () && result.get() == ButtonType.OK) {
                 ps.executeUpdate ();
-                tableView.refresh();
             }
 
 
@@ -201,6 +198,7 @@ public class GuestController implements Initializable {
             e.getCause ();
         }
         finally {
+            refreshTable ();
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
                     fatherNameField,nationalityField, emailField , phoneNumberTextField);
         }
@@ -232,7 +230,7 @@ public class GuestController implements Initializable {
             }
 
                 // if the user didn't enter a new SSN, we will use the old one.
-                int SSN = HelloApplication.isTextFieldEmpty ( SSN_field ) ? tableView.getSelectionModel ().getSelectedItem ().getGuestSSN () : Integer.parseInt ( SSN_field.getText () );
+                int SSN =  tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
                 String firstName = HelloApplication.isTextFieldEmpty(firstNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFirstName () : firstNameField.getText ();
                 String fatherName = HelloApplication.isTextFieldEmpty(fatherNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFatherName () : fatherNameField.getText ();
                 String familyName = HelloApplication.isTextFieldEmpty(familyNameField) ? tableView.getSelectionModel ().getSelectedItem ().getGuestFamilyName () : familyNameField.getText ();
@@ -279,7 +277,6 @@ public class GuestController implements Initializable {
                 // if the user confirms the update action
                 if ( result.isPresent () && result.get() == ButtonType.OK) {
                     preparedStatement.execute ();
-                    tableView.refresh();
                 }
 
         } catch (SQLException e) {
@@ -287,6 +284,7 @@ public class GuestController implements Initializable {
             e.getCause ();
         }
         finally {
+            refreshTable ();
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
                     fatherNameField,nationalityField, emailField , phoneNumberTextField);
         }
