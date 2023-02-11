@@ -47,6 +47,14 @@ public Payment(int SSN, String paymentType, String paymentDate, double amountPai
         this.amountPaid = amountPaid;
     }
 
+    public int getPaymentID() {
+        return paymentID;
+    }
+
+    public void setPaymentID(int paymentID) {
+        this.paymentID = paymentID;
+    }
+
     @Override
     public String toString() {
         return "Payment{" +

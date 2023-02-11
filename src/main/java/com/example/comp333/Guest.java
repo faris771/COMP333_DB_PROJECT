@@ -23,7 +23,7 @@ public class Guest {
             setGuestPhoneNumber ( guestPhoneNumber );
         }
         catch (IllegalArgumentException e){
-
+            System.out.println ( e.getMessage () );
         }
 
     }

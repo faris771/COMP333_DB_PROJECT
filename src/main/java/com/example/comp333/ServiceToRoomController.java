@@ -89,22 +89,19 @@ public class ServiceToRoomController implements Initializable {
             FilteredList<ServiceToRoom> filteredData = new FilteredList<>(serviceToRoomObservableList, b -> true);
             searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(serviceToRoom -> {
-                    if (newValue == null || newValue.isEmpty()) {
+                    if ( newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (String.valueOf(serviceToRoom.getServiceID()).contains(newValue)) {
+                    if (String.valueOf(serviceToRoom.getServiceID()).contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(serviceToRoom.getRoomNumber()).contains(newValue)) {
+                    } else if (String.valueOf(serviceToRoom.getRoomNumber()).contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(serviceToRoom.getEmployeeID()).contains(newValue)) {
+                    } else if (String.valueOf(serviceToRoom.getEmployeeID()).contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(serviceToRoom.getServiceDate()).contains(newValue)) {
+                    } else if (String.valueOf(serviceToRoom.getServiceDate()).contains(lowerCaseFilter)) {
                         return true;
-                    } else if (String.valueOf(serviceToRoom.getServiceIsPaid()).contains(newValue)) {
-                        return true;
-                    }
-                    return false;
+                    } else return String.valueOf ( serviceToRoom.getServiceIsPaid () ).contains ( lowerCaseFilter );
                 });
             });
             SortedList<ServiceToRoom> sortedData = new SortedList<>(filteredData);
@@ -195,7 +192,7 @@ public class ServiceToRoomController implements Initializable {
         String insertQuery = "INSERT INTO service_to_room (service_id, room_number, eid) VALUES (?,?,?)";
         PreparedStatement preparedStatement = connectDB.prepareStatement(insertQuery);
 
-        if (serviceIDField.getText().isBlank() || roomNumberField.getText().isBlank() || employeeIDField.getText().isBlank()) {
+        if (HelloApplication.isTextFieldEmpty ( serviceIDField, roomNumberField, employeeIDField )) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -208,9 +205,9 @@ public class ServiceToRoomController implements Initializable {
         int roomNumber;
         int employeeID;
         try { // if the user enters a string instead of an integer
-            serviceID = Integer.parseInt(serviceIDField.getText());
-            roomNumber = Integer.parseInt(roomNumberField.getText());
-            employeeID = Integer.parseInt(employeeIDField.getText());
+            serviceID = Integer.parseInt(serviceIDField.getText().trim ());
+            roomNumber = Integer.parseInt(roomNumberField.getText().trim ());
+            employeeID = Integer.parseInt(employeeIDField.getText().trim ());
         } catch (NumberFormatException e) {
             HelloApplication.AlertShow("Invalid Inputs", "ERROR", Alert.AlertType.ERROR);
             return;
@@ -245,7 +242,7 @@ public class ServiceToRoomController implements Initializable {
         String deleteQuery = "DELETE FROM service_to_room WHERE service_id = ? AND room_number = ?";
         PreparedStatement preparedStatement = connectDB.prepareStatement(deleteQuery);
 
-        if (serviceIDField.getText().isBlank() || roomNumberField.getText().isBlank()) {
+        if (HelloApplication.isTextFieldEmpty ( serviceIDField, roomNumberField)) {
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -257,8 +254,8 @@ public class ServiceToRoomController implements Initializable {
         int serviceID;
         int roomNumber;
         try { // if the user enters a string instead of an integer
-            serviceID = Integer.parseInt(serviceIDField.getText());
-            roomNumber = Integer.parseInt(roomNumberField.getText());
+            serviceID = Integer.parseInt(serviceIDField.getText().trim ());
+            roomNumber = Integer.parseInt(roomNumberField.getText().trim ());
         } catch (NumberFormatException e) {
             HelloApplication.AlertShow("Invalid Inputs", "ERROR", Alert.AlertType.ERROR);
             return;

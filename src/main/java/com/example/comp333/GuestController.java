@@ -176,19 +176,13 @@ public class GuestController implements Initializable {
             ewww.printStackTrace ();
             ewww.getCause ();
         }
-        finally {
-            HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
-                    fatherNameField,nationalityField, emailField , phoneNumberTextField);
-
-        }
 
         DataBaseConnection connectDB = new DataBaseConnection ();
-        String bookingDeleteQuery = "DELETE FROM booking WHERE Booking_id = " + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN ();
+        String bookingDeleteQuery = "DELETE FROM guest WHERE Guest_SSN = '" + tableView.getSelectionModel ().getSelectedItem ().getGuestSSN () + "'";
         try {
             Connection connection = connectDB.getConnection ();
 
             PreparedStatement ps = connection.prepareStatement ( bookingDeleteQuery);
-
             Alert alert = new Alert ( Alert.AlertType.CONFIRMATION );
             alert.setContentText ( "Are you sure you want to delete the guest?" );
             alert.setHeaderText ( "Please confirm your action" );
@@ -197,9 +191,10 @@ public class GuestController implements Initializable {
 
             // if the user confirms the deletion
             if ( result.isPresent () && result.get() == ButtonType.OK) {
-                ps.execute ();
-                refreshTable();
+                ps.executeUpdate ();
+                tableView.refresh();
             }
+
 
         } catch (Exception e) {
             e.printStackTrace ();
@@ -208,7 +203,6 @@ public class GuestController implements Initializable {
         finally {
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
                     fatherNameField,nationalityField, emailField , phoneNumberTextField);
-            refreshTable();
         }
     }
 
@@ -252,8 +246,6 @@ public class GuestController implements Initializable {
                         " G.Guest_father_Name = ?, G.Guest_family_Name = ?, " +
                         "G.Guest_email = ?, G.Guest_nationality = ? where Guest_SSn = ? ");
 
-
-
                 try {
                     if (phoneNumber.length () != 10) {
                         HelloApplication.AlertShow ( "Please enter a valid phone number", "Invalid phone number", Alert.AlertType.ERROR );
@@ -287,6 +279,7 @@ public class GuestController implements Initializable {
                 // if the user confirms the update action
                 if ( result.isPresent () && result.get() == ButtonType.OK) {
                     preparedStatement.execute ();
+                    tableView.refresh();
                 }
 
         } catch (SQLException e) {
@@ -294,7 +287,6 @@ public class GuestController implements Initializable {
             e.getCause ();
         }
         finally {
-            tableView.refresh();
             HelloApplication.clearTextFields ( SSN_field, firstNameField, familyNameField,
                     fatherNameField,nationalityField, emailField , phoneNumberTextField);
         }
@@ -413,19 +405,27 @@ public class GuestController implements Initializable {
             Statement statement = connectDB.createStatement (); // create a statement
             ResultSet queryRes = statement.executeQuery (guestShowQuery);   // execute the query
 
-            if (tableView.getItems () != null && !tableView.getItems ().isEmpty ()  )
-                // clear the table view
-                tableView.getItems ().clear ();
 
-            while (queryRes.next ()) {
-                tableView.getItems ().add ( new Guest ( queryRes.getInt ( "Guest_SSN" ),
-                    queryRes.getString ( "Guest_first_Name" ), queryRes.getString ( "Guest_father_Name" ),
-                    queryRes.getString ( "Guest_family_Name" ), queryRes.getString ( "Guest_email" ),
-                    queryRes.getString ( "Guest_nationality" ), queryRes.getString ( "phone_num" ))); // add the new data to the table view
+            // clear the observable list to avoid duplicates
+            guestObservableList.clear ();
+
+            // add the new data to the observable list
+            while (queryRes.next()) {
+
+                guestObservableList.add ( new Guest ( queryRes.getInt ( "Guest_SSN" ), queryRes.getString ( "Guest_first_Name" ),
+                        queryRes.getString ( "Guest_father_Name" ), queryRes.getString ( "Guest_family_Name" ), queryRes.getString ( "Guest_email" )
+                , queryRes.getString ( "Guest_nationality" ), queryRes.getString ( "phone_num" )) );
 
             }
-
-            statement.close ();
+            // set the cell value factory to the table view
+            SSNCol.setCellValueFactory ( new PropertyValueFactory<> ("guestSSN"));
+            firstNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFirstName"));
+            fatherNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFatherName"));
+            familyNameCol.setCellValueFactory ( new PropertyValueFactory<> ("guestFamilyName"));
+            emailCol.setCellValueFactory ( new PropertyValueFactory<> ("guestEmail"));
+            nationalityCol.setCellValueFactory ( new PropertyValueFactory<> ("guestNationality"));
+            phoneNumberCol.setCellValueFactory ( new PropertyValueFactory<> ("guestPhoneNumber"));
+            tableView.setItems ( guestObservableList );
 
         } catch (SQLException e) {
             e.printStackTrace ();

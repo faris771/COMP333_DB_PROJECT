@@ -68,7 +68,6 @@ public class PaymentController implements Initializable {
         cardRadioBtn.setToggleGroup ( paymentType );
         cashRadioBtn.setToggleGroup ( paymentType );
 
-
         DataBaseConnection connection = new DataBaseConnection ();
 
         String paymentsShowQuery = "SELECT * FROM Payment";
@@ -106,6 +105,12 @@ public class PaymentController implements Initializable {
             return;
         }
 
+        try {
+            Integer.parseInt ( ssnTextField.getText () );
+        } catch (NumberFormatException e) {
+            HelloApplication.AlertShow ( "Please enter a valid SSN", "Error", Alert.AlertType.ERROR );
+            return;
+        }
         int SSN = Integer.parseInt ( ssnTextField.getText () );
 
         if (paymentType.getSelectedToggle () == null) {
@@ -145,10 +150,10 @@ public class PaymentController implements Initializable {
                 statement.executeUpdate ( bookedRoomsDelete );
             }
 
-
             String amountPaidOnServicesQuery = "SELECT S.service_price FROM service S, service_to_room STR, booking B WHERE B.Guest_SSN = " + SSN + " AND B.room_number = STR.room_number AND STR.service_id = S.service_id";
 
-            ResultSet servicesResultSet = statement.executeQuery ( amountPaidOnServicesQuery );
+            Statement statement1 = connectDB.createStatement ();
+            ResultSet servicesResultSet = statement1.executeQuery ( amountPaidOnServicesQuery );
 
 
             double servicePayment = 0;

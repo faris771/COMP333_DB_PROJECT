@@ -195,17 +195,19 @@ public class ServiceController implements Initializable {
         DataBaseConnection connectNow = new DataBaseConnection();
         Connection connection = connectNow.getConnection();
         PreparedStatement preparedStatement = null;
-        if (serviceTypeField.getText().isBlank() || servicePriceField.getText().isBlank() || seviceIDField.getText().isBlank()) { // if the text field is empty then return
+        if (tableView.getSelectionModel ().getSelectedItem() == null ) { // if the text field is empty then return
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Please fill all the fields");
+            alert.setHeaderText("Please select a service from the table");
             alert.setContentText("");
             alert.showAndWait();
             return;
         }
-        int serviceID ; //;
+
         try {
-            serviceID = Integer.parseInt(seviceIDField.getText());
+            if (!HelloApplication.isTextFieldEmpty ( seviceIDField ) ) {
+                Integer.parseInt ( seviceIDField.getText () );
+            }
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -215,27 +217,45 @@ public class ServiceController implements Initializable {
             return;
         }
 
+        try {
+            if (!HelloApplication.isTextFieldEmpty ( servicePriceField ) ) {
+                Double.parseDouble ( servicePriceField.getText () );
+            }
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Service Price must be a double");
+            alert.setContentText("");
+            alert.showAndWait();
+            return;
+        }
 
 
+        int serviceID = (HelloApplication.isTextFieldEmpty ( seviceIDField ) ? tableView.getSelectionModel ().getSelectedItem ().getServiceID () : Integer.parseInt ( seviceIDField.getText ().trim () ));
+        String serviceType = (HelloApplication.isTextFieldEmpty ( serviceTypeField ) ? tableView.getSelectionModel ().getSelectedItem ().getServiceType () : serviceTypeField.getText ());
+        double servicePrice = (HelloApplication.isTextFieldEmpty ( servicePriceField ) ? tableView.getSelectionModel ().getSelectedItem ().getServicePrice () : Double.parseDouble ( servicePriceField.getText () ));
+
+        System.out.println ( serviceID );
+        System.out.println ( serviceType );
+        System.out.println ( servicePrice );
 
         try {
-            Service dummyService = new Service(serviceID, serviceTypeField.getText(),
-                    Double.parseDouble(servicePriceField.getText()));
+            if (serviceID == tableView.getSelectionModel ().getSelectedItem ().getServiceID () || !checkIfServiceEXists ( serviceID )) {
 
-            if (checkIfServiceEXists(dummyService.getServiceID())) {
+                preparedStatement = connection.prepareStatement("UPDATE SERVICE SET service_type = ?, service_price = ?, service_id = ? WHERE service_id = ?");
 
-                preparedStatement = connection.prepareStatement("UPDATE SERVICE SET service_type = ?, service_price = ? WHERE service_id = ?");
-
-                preparedStatement.setString(1, dummyService.getServiceType());
-                preparedStatement.setString(2, String.valueOf(dummyService.getServicePrice())); // makes the double value STRING
-                preparedStatement.setString(3, dummyService.getServiceID() + "");
+                preparedStatement.setString(1, serviceType + "");
+                preparedStatement.setString ( 2, servicePrice + ""); // set the price
+                preparedStatement.setString (3, serviceID + ""); // set the id
+                preparedStatement.setString (4, tableView.getSelectionModel ().getSelectedItem ().getServiceID () +"");
                 preparedStatement.execute();
+
                 HelloApplication.AlertShow("Service Updated Successfully", "ADDED ", Alert.AlertType.INFORMATION);
 
 
             } else {
                 HelloApplication.clearTextFields(seviceIDField);
-                HelloApplication.AlertShow("Error, no such service exists!", "Service not found!!", Alert.AlertType.ERROR);
+                HelloApplication.AlertShow("Error, service with such id already exists", "Service duplicate id!", Alert.AlertType.ERROR);
 
             }
 
@@ -323,6 +343,7 @@ public class ServiceController implements Initializable {
             Connection connectDB = connection.getConnection();
             Statement statement = connectDB.createStatement();
             ResultSet queryRes = statement.executeQuery(guestShowQuery);
+
             while (queryRes.next()) {
                 int serviceID = (queryRes.getInt("service_id"));
                 String serviceType = queryRes.getString("service_type");
